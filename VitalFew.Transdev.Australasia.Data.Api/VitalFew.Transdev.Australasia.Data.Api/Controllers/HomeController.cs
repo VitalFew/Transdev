@@ -10,15 +10,13 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Controllers
 {
     public class HomeController : Controller
     {
-        IDataProvider _dataProvider;
-
         /// <summary>
         /// Values Controller
         /// </summary>
         /// <param name="dataProvider"></param>
-        public HomeController(IDataProvider dataProvider)
+        public HomeController()
         {
-            _dataProvider = dataProvider;
+            
         }
 
         public ActionResult Index()
