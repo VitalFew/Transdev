@@ -1,40 +1,39 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using VitalFew.Transdev.Australasia.Data.Api.Models;
+using VitalFew.Transdev.Australasia.Data.Api.Providers;
+using VitalFew.Transdev.Australasia.Data.Api.Providers.Contract;
 
 namespace VitalFew.Transdev.Australasia.Data.Api.Controllers
 {
-    [Authorize]
+
+    //[Authorize]
     public class ValuesController : ApiController
     {
+        /// <summary>
+        /// Values Controller
+        /// </summary>
+        public ValuesController()
+        {
+            
+        }
+
         // GET api/values
-        public IEnumerable<string> Get()
+        public JsonDataTable Get(string query)
         {
-            return new string[] { "value1", "value2" };
+            IDataProvider dataProvider = new DataProvider();
+            var dataTable = dataProvider.Execute(1, query);
+            dataTable.TableName = query;
+
+            var jsonDataTable = new JsonDataTable(dataTable);
+            return jsonDataTable;
         }
 
-        // GET api/values/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/values
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/values/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/values/5
-        public void Delete(int id)
-        {
-        }
     }
 }
