@@ -16,19 +16,20 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Controllers
     //[Authorize]
     public class ValuesController : ApiController
     {
+        IDataProvider _dataProvider;
+
         /// <summary>
         /// Values Controller
         /// </summary>
-        public ValuesController()
+        public ValuesController(IDataProvider dataProvider)
         {
-            
+            _dataProvider = dataProvider;
         }
 
         // GET api/values
         public JsonDataTable Get(string query)
         {
-            IDataProvider dataProvider = new DataProvider();
-            var dataTable = dataProvider.Execute(1, query);
+            var dataTable = _dataProvider.Execute(1, query);
             dataTable.TableName = query;
 
             var jsonDataTable = new JsonDataTable(dataTable);
