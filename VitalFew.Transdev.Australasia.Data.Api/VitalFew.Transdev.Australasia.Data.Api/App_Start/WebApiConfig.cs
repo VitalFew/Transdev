@@ -5,6 +5,8 @@ using System.Net.Http;
 using System.Web.Http;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
+using System.Web.Http.Dispatcher;
+using VitalFew.Transdev.Australasia.Data.Api.Infrastructure.Headers;
 
 namespace VitalFew.Transdev.Australasia.Data.Api
 {
@@ -23,7 +25,12 @@ namespace VitalFew.Transdev.Australasia.Data.Api
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
+                defaults: new { id = RouteParameter.Optional },
+                constraints: null,
+                handler: HttpClientFactory.CreatePipeline(
+                                new HttpControllerDispatcher(config),
+                                new DelegatingHandler[] { new AuthMessageHandler() })
+
             );
         }
     }

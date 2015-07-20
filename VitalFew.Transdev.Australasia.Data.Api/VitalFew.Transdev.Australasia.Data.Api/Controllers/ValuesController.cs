@@ -26,7 +26,11 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Controllers
             _dataProvider = dataProvider;
         }
 
-        // GET api/values
+        /// <summary>
+        /// GET api/values
+        /// </summary>
+        /// <param name="query">string</param>
+        /// <returns></returns>
         public JsonDataTable Get(string query)
         {
             var dataTable = _dataProvider.Execute(1, query);

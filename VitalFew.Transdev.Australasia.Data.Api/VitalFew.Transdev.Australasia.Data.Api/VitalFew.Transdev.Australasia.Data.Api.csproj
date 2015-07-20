@@ -230,6 +230,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Conveters\DataTableConverter.cs" />
+    <Compile Include="Infrastructure\Headers\AuthMessageHandler.cs" />
     <Compile Include="Models\Database\Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -253,6 +254,8 @@
     </Compile>
     <Compile Include="Models\JsonDataTable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\AuthorizationProvider.cs" />
+    <Compile Include="Providers\Contract\IAuthorizationProvider.cs" />
     <Compile Include="Providers\Contract\IDataProvider.cs" />
     <Compile Include="Providers\DataProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
