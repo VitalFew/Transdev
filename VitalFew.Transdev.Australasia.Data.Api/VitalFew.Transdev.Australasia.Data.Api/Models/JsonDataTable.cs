@@ -27,7 +27,8 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Models
                 writer.WriteStartElement(Data.TableName);
                 foreach (DataColumn column in row.Table.Columns)
                 {
-                    writer.WriteElementString(column.ColumnName, row[column].ToString());
+                    string columnName = XmlConvert.EncodeName(column.ColumnName);
+                    writer.WriteElementString(columnName, row[column].ToString());
                 }
                 writer.WriteEndElement();
             }
@@ -41,6 +42,14 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Models
         public void ReadXml(XmlReader reader)
         {
             throw new NotImplementedException();
+        }
+
+        private string XmlEscape(string unescaped)
+        {
+            XmlDocument doc = new XmlDocument();
+            XmlNode node = doc.CreateElement("root");
+            node.InnerText = unescaped;
+            return node.InnerXml;
         }
 
         public DataTable Data { get; set; }

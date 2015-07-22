@@ -33,11 +33,18 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Controllers
         /// <returns></returns>
         public JsonDataTable Get(string query)
         {
-            var dataTable = _dataProvider.Execute(1, query);
-            dataTable.TableName = query;
+            try
+            {
+                var dataTable = _dataProvider.Execute(1, query);
+                dataTable.TableName = query;
 
-            var jsonDataTable = new JsonDataTable(dataTable);
-            return jsonDataTable;
+                var jsonDataTable = new JsonDataTable(dataTable);
+                return jsonDataTable;
+            }
+            catch
+            {
+                throw new HttpResponseException(HttpStatusCode.InternalServerError);
+            }
         }
 
     }
