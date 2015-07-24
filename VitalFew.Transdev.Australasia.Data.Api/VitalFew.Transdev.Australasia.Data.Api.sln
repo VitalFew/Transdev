@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.22823.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VitalFew.Transdev.Australasia.Data.Api", "VitalFew.Transdev.Australasia.Data.Api\VitalFew.Transdev.Australasia.Data.Api.csproj", "{C749AA1A-06D7-4B78-9C44-09B4E0473CBF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VitalFew.Transdev.Australasia.Data.Api.UI", "VitalFew.Transdev.Australasia.Data.Api.UI\VitalFew.Transdev.Australasia.Data.Api.UI.csproj", "{C749AA1A-06D7-4B78-9C44-09B4E0473CBF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9768e25a6b254f9e84a439d307e6a107" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.VF_API_CATALOG_CLIENTS" Width="1.5" PointX="0.75" PointY="2.125" />
+        <EntityTypeShape EntityType="Model.VF_API_CLIENT_OBJECTS" Width="1.5" PointX="3" PointY="1" />
+        <AssociationConnector Association="Model.FK_VF_API_CLIENT_OBJECTS_VF_API_CATALOG_CLIENTS" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
