@@ -224,7 +224,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\BaseApiController.cs" />
+    <Compile Include="Controllers\ApiBaseController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -256,6 +256,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\AuthorizationProvider.cs" />
     <Compile Include="Providers\Contract\IAuthorizationProvider.cs" />
+    <Compile Include="Providers\Contract\IConfigurationProvider.cs" />
+    <Compile Include="Providers\ConfigurationProvider.cs" />
     <Compile Include="Providers\Contract\IDataProvider.cs" />
     <Compile Include="Providers\DataProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
@@ -347,6 +349,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VitalFew.Transdev.Australasia.Data.Api\VitalFew.Transdev.Australasia.Data.Api.csproj">
+      <Project>{31220c85-94ef-4e1c-8029-430db94b82c1}</Project>
+      <Name>VitalFew.Transdev.Australasia.Data.Api</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

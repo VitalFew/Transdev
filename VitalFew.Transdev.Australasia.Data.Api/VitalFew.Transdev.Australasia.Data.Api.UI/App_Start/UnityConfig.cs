@@ -15,6 +15,8 @@ namespace VitalFew.Transdev.Australasia.Data.Api
             // register all your components with the container here
             // it is NOT necessary to register your controllers
 
+            container.RegisterType<IAuthorizationProvider, AuthorizationProvider>();
+            container.RegisterType<IConfigurationProvider, ConfigurationProvider>();
             container.RegisterType<IDataProvider, DataProvider>();
 
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);

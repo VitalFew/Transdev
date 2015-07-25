@@ -29,7 +29,7 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Infrastructure.Headers
 
             if (hasClientId && hasClientToken)
             {
-                identity = ValidateAuthentication(clientIdValues.FirstOrDefault(), clientTokenValues.FirstOrDefault());
+                identity = new AuthorizationProvider().ValidateAuthentication(clientIdValues.FirstOrDefault(), clientTokenValues.FirstOrDefault());
 
                 if (identity != null) //Valid User
                 {
@@ -51,20 +51,6 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Infrastructure.Headers
                     else
                         return request.CreateResponse(responseCode);
                 });
-        }
-
-        private ClaimsIdentity ValidateAuthentication(string clientName, string clientToken)
-        {
-            IAuthorizationProvider authorizationProvider = new AuthorizationProvider();
-
-            //Check your api key and secret here
-            if (authorizationProvider.Authorize(clientName, clientToken))
-            {
-                var identity = new ClaimsIdentity("Client-Token");
-                identity.AddClaim(new Claim("Client-Name", clientName.ToString(), null));
-                return identity;
-            }
-            return null;
         }
     }
 }
