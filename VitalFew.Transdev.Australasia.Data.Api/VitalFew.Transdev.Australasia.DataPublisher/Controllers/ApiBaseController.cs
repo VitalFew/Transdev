@@ -25,12 +25,12 @@ namespace VitalFew.Transdev.Australasia.DataPublisher.Controllers
             _authorizationProvider = authorizationProvider;
         }
 
-        public string ClientId
+        public Guid ClientId
         {
             get
             {
                 var s = _authorizationProvider.Claim;
-                return s.Value;
+                return Guid.Parse(s.Value);
             }
         }
     }

@@ -17,7 +17,7 @@ namespace VitalFew.Transdev.Australasia.Data.Core.Adaptors
     public class SqlServerTableAdaptor : IProcessor
     {
 
-        string _queryTemplate = "SELECT * FROM {0}.{1};";
+        string _queryTemplate = "SELECT * FROM {0}.{1}";
 
         public override DataTable Execute(IParameters parameters)
         {
@@ -44,6 +44,8 @@ namespace VitalFew.Transdev.Australasia.Data.Core.Adaptors
                 sqlConnection.Open();
                 DataTable dataTable = new DataTable();
                 dataTable.Load(cmd.ExecuteReader());
+
+                dataTable.TableName = ((SqlServerTableParameters)parameters).ObjectName;
                 return dataTable;
             }
         }

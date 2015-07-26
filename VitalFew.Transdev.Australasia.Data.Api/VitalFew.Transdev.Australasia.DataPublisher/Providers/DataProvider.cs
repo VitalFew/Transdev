@@ -24,7 +24,8 @@ namespace VitalFew.Transdev.Australasia.DataPublisher.Providers
                 parameters.DataSource = client.DB_SERVER_NAME;
                 parameters.InitialCatalog = client.DB_NAME;
                 parameters.IntegratedSecurity = client.DB_INTEGRATED_SECURITY;
- 
+                parameters.ObjectName = client.DB_OBJECT_NAME;
+
                 adaptor.Processor = new SqlServerTableAdaptor();
                 return adaptor.Execute(parameters);
             }

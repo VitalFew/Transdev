@@ -22,17 +22,19 @@ namespace VitalFew.Transdev.Australasia.DataPublisher.Providers
         public ClaimsIdentity ValidateAuthentication(string clientName, string clientToken)
         {
             //Check your api key and secret here
-            if (Authorize(clientName, clientToken))
+            var clientId = Authorize(clientName, clientToken);
+
+            if (clientId != null)
             {
                 var identity = new ClaimsIdentity("Client-Token");
-                identity.AddClaim(new Claim("Client-Name", clientName.ToString(), null));
+                identity.AddClaim(new Claim("Client-Name", clientId.ToString(), null));
                 return identity;
             }
 
             return null;
         }
 
-        private bool Authorize(string clientName, string clientToken)
+        private Guid? Authorize(string clientName, string clientToken)
         {
             using (var context = new Models.Database.Entities())
             {
@@ -42,10 +44,10 @@ namespace VitalFew.Transdev.Australasia.DataPublisher.Providers
 
                 if (client != null)
                 {
-                    return true;
+                    return client.CLIENT_ID;
                 }
 
-                return false;
+                return null;
             }
         }
     }

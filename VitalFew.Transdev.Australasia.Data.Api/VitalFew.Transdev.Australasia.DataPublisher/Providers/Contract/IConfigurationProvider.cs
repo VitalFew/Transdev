@@ -10,6 +10,6 @@ namespace VitalFew.Transdev.Australasia.DataPublisher.Providers.Contract
 {
     public interface IConfigurationProvider
     {
-        VF_API_CLIENT_OBJECTS Get(string transdevId, string transdevParam);
+        VF_API_CLIENT_OBJECTS Get(Guid clientId, string param);
     }
 }

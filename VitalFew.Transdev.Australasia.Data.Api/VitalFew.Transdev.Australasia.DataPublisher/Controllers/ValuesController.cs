@@ -37,17 +37,15 @@ namespace VitalFew.Transdev.Australasia.DataPublisher.Controllers
         {
             try
             {
-                var s = ClientId;
-
                 ConfigurationProvider configurationProvider = new ConfigurationProvider();
-                var configuration = configurationProvider.Get(HttpContext.Current.User.Identity.Name, query);
+                var configuration = configurationProvider.Get(ClientId, query);
 
                 var dataTable = _dataProvider.Execute(configuration);
 
                 var jsonDataTable = new JsonDataTable(dataTable);
                 return jsonDataTable;
             }
-            catch
+            catch(Exception ex)
             {
                 throw new HttpResponseException(HttpStatusCode.InternalServerError);
             }
