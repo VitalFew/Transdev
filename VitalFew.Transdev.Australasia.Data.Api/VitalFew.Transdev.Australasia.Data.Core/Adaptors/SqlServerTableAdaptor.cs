@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using VitalFew.Transdev.Australasia.Data.Core.Parameters;
 using VitalFew.Transdev.Australasia.Data.Core.Parameters.Interfaces;
 using VitalFew.Transdev.Australasia.Data.Core.Processor;
+using VitalFew.Transdev.Australasia.Data.Core.Result;
 
 namespace VitalFew.Transdev.Australasia.Data.Core.Adaptors
 {
@@ -19,7 +20,7 @@ namespace VitalFew.Transdev.Australasia.Data.Core.Adaptors
 
         string _queryTemplate = "SELECT * FROM {0}.{1}";
 
-        public override DataTable Execute(IParameters parameters)
+        public override TableObject Execute(IParameters parameters)
         {
             var sqlConnection = new SqlConnection();
             
@@ -46,7 +47,13 @@ namespace VitalFew.Transdev.Australasia.Data.Core.Adaptors
                 dataTable.Load(cmd.ExecuteReader());
 
                 dataTable.TableName = ((SqlServerTableParameters)parameters).ObjectName;
-                return dataTable;
+
+                var obj = new TableObject();
+
+                obj.Result = dataTable;
+                obj.RecordCount = dataTable.Rows.Count;
+
+                return obj;
             }
         }
     }

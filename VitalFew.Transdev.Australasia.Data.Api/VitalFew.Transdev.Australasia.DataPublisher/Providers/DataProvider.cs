@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using VitalFew.Transdev.Australasia.Data.Core.Adaptors;
 using VitalFew.Transdev.Australasia.Data.Core.Parameters;
+using VitalFew.Transdev.Australasia.Data.Core.Result;
 using VitalFew.Transdev.Australasia.DataPublisher.Models.Database;
 using VitalFew.Transdev.Australasia.DataPublisher.Providers.Contract;
 
@@ -12,7 +13,7 @@ namespace VitalFew.Transdev.Australasia.DataPublisher.Providers
 {
     public class DataProvider : IDataProvider
     {
-        public DataTable Execute(VF_API_CLIENT_OBJECTS client)
+        public TableObject Execute(VF_API_CLIENT_OBJECTS client)
         {
             using (var context = new Models.Database.Entities())
             {

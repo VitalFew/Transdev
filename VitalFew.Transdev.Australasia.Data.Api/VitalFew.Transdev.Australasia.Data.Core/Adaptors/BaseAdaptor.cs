@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VitalFew.Transdev.Australasia.Data.Core.Parameters.Interfaces;
+using VitalFew.Transdev.Australasia.Data.Core.Result;
 
 namespace VitalFew.Transdev.Australasia.Data.Core.Adaptors
 {
@@ -13,7 +14,7 @@ namespace VitalFew.Transdev.Australasia.Data.Core.Adaptors
     /// </summary>
     public class BaseAdaptor : Adaptor
     {
-        public override DataTable Execute(IParameters parameters)
+        public override TableObject Execute(IParameters parameters)
         {
             return processor.Execute(parameters);
         }

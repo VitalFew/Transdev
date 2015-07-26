@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using VitalFew.Transdev.Australasia.Data.Core.Parameters.Interfaces;
 using VitalFew.Transdev.Australasia.Data.Core.Processor;
+using VitalFew.Transdev.Australasia.Data.Core.Result;
 
 namespace VitalFew.Transdev.Australasia.Data.Core.Adaptors
 {
@@ -21,7 +22,7 @@ namespace VitalFew.Transdev.Australasia.Data.Core.Adaptors
             set { processor = value; }
         }
 
-        public virtual DataTable Execute(IParameters parameters)
+        public virtual TableObject Execute(IParameters parameters)
         {
             return processor.Execute(parameters);
         }

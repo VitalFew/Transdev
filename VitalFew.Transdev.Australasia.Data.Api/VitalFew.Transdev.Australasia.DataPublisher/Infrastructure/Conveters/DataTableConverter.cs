@@ -24,7 +24,7 @@ namespace VitalFew.Transdev.Australasia.DataPublisher.Infrastructure.Conveters
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             JsonDataTable myDataTable = value as JsonDataTable;
-            DataTable dt = myDataTable.Data;
+            DataTable dt = myDataTable.Data.Result;
 
             writer.WriteStartArray();
 

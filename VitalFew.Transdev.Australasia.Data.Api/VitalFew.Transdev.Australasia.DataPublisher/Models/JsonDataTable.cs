@@ -8,23 +8,26 @@ using System.Web;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
+using VitalFew.Transdev.Australasia.Data.Core.Result;
 
 namespace VitalFew.Transdev.Australasia.DataPublisher.Models
 {
-    //[JsonConverter(typeof(DataTableConverter))]
-    [XmlRoot("Data")]
+    [JsonConverter(typeof(DataTableConverter))]
+    [XmlRoot("Result")]
     public class JsonDataTable : IXmlSerializable
     {
-        public JsonDataTable(DataTable datatable)
+        public JsonDataTable(TableObject datatable)
         {
             this.Data = datatable;
         }
 
         public void WriteXml(XmlWriter writer)
         {
-            foreach (DataRow row in Data.Rows)
+            writer.WriteAttributeString("RecordCount", this.Data.RecordCount.ToString());
+
+            foreach (DataRow row in Data.Result.Rows)
             {
-                writer.WriteStartElement(Data.TableName);
+                writer.WriteStartElement(Data.Result.TableName);
                 foreach (DataColumn column in row.Table.Columns)
                 {
                     string columnName = XmlConvert.EncodeName(column.ColumnName);
@@ -52,6 +55,6 @@ namespace VitalFew.Transdev.Australasia.DataPublisher.Models
             return node.InnerXml;
         }
 
-        public DataTable Data { get; set; }
+        public TableObject Data { get; set; }
     }
 }
