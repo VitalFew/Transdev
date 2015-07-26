@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Adaptors\SqlServerTableAdaptor.cs" />
+    <Compile Include="Exceptions\AdaptorExecuteException.cs" />
     <Compile Include="Processor\IProcessor.cs" />
     <Compile Include="Adaptors\Adaptor.cs" />
     <Compile Include="Parameters\Interfaces\IParameters.cs" />

@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VitalFew.Transdev.Australasia.Data.Core.Exceptions;
 using VitalFew.Transdev.Australasia.Data.Core.Parameters;
 using VitalFew.Transdev.Australasia.Data.Core.Parameters.Interfaces;
 using VitalFew.Transdev.Australasia.Data.Core.Processor;
@@ -22,39 +23,48 @@ namespace VitalFew.Transdev.Australasia.Data.Core.Adaptors
 
         public override QueryResult<DataTable> Execute(ISqlServerTableParameters parameters)
         {
-            var sqlConnection = new SqlConnection();
-            
-            var sqlConnectionStringBuilder = new SqlConnectionStringBuilder();
-            sqlConnectionStringBuilder.UserID = parameters.UserID;
-            sqlConnectionStringBuilder.Password = parameters.Password;
-            sqlConnectionStringBuilder.InitialCatalog = parameters.InitialCatalog;
-            sqlConnectionStringBuilder.DataSource = parameters.DataSource;
-
-            if (((SqlServerTableParameters)parameters).IntegratedSecurity.HasValue)
+            try
             {
-                sqlConnectionStringBuilder.IntegratedSecurity = parameters.IntegratedSecurity.Value;
+                var sqlConnection = new SqlConnection();
+
+                var sqlConnectionStringBuilder = new SqlConnectionStringBuilder();
+                sqlConnectionStringBuilder.UserID = parameters.UserID;
+                sqlConnectionStringBuilder.Password = parameters.Password;
+                sqlConnectionStringBuilder.InitialCatalog = parameters.InitialCatalog;
+                sqlConnectionStringBuilder.DataSource = parameters.DataSource;
+
+                if (((SqlServerTableParameters)parameters).IntegratedSecurity.HasValue)
+                {
+                    sqlConnectionStringBuilder.IntegratedSecurity = parameters.IntegratedSecurity.Value;
+                }
+
+                sqlConnection.ConnectionString = sqlConnectionStringBuilder.ConnectionString;
+
+                string query = string.Format(_queryTemplate, parameters.SchemaName,
+                    parameters.ObjectName);
+
+                using (SqlCommand cmd = new SqlCommand(query, sqlConnection))
+                {
+                    sqlConnection.Open();
+                    DataTable dataTable = new DataTable();
+                    dataTable.Load(cmd.ExecuteReader());
+
+                    dataTable.TableName = ((SqlServerTableParameters)parameters).ObjectName;
+
+                    var queryResult = new QueryResult<DataTable>();
+
+                    queryResult.Result = dataTable;
+                    queryResult.RecordCount = dataTable.Rows.Count;
+
+                    return queryResult;
+                }
+            }
+            catch
+            {
+                throw new AdaptorExecuteException();
             }
 
-            sqlConnection.ConnectionString = sqlConnectionStringBuilder.ConnectionString;
-
-            string query = string.Format(_queryTemplate, parameters.SchemaName, 
-                parameters.ObjectName);
-
-            using (SqlCommand cmd = new SqlCommand(query, sqlConnection))
-            {
-                sqlConnection.Open();
-                DataTable dataTable = new DataTable();
-                dataTable.Load(cmd.ExecuteReader());
-
-                dataTable.TableName = ((SqlServerTableParameters)parameters).ObjectName;
-
-                var obj = new QueryResult<DataTable>();
-
-                obj.Result = dataTable;
-                obj.RecordCount = dataTable.Rows.Count;
-
-                return obj;
-            }
+            return null;
         }
     }
 }

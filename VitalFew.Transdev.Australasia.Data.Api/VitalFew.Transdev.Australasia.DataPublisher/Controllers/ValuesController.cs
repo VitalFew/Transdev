@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.Results;
+using VitalFew.Transdev.Australasia.Data.Core.Exceptions;
 using VitalFew.Transdev.Australasia.DataPublisher.Models;
 using VitalFew.Transdev.Australasia.DataPublisher.Providers;
 using VitalFew.Transdev.Australasia.DataPublisher.Providers.Contract;
@@ -68,11 +69,17 @@ namespace VitalFew.Transdev.Australasia.DataPublisher.Controllers
             }
             catch(Exception ex)
             {
-                if (((HttpResponseException)ex).Response.StatusCode == HttpStatusCode.BadRequest)
+                if (ex.GetType() == typeof(AdaptorExecuteException))
+                {
+                    throw new HttpResponseException(HttpStatusCode.NoContent);
+                }
+
+                if ((ex.GetType() == typeof(HttpResponseException)) &&
+                    (((HttpResponseException)ex).Response.StatusCode == HttpStatusCode.BadRequest))
                 {
                     throw new HttpResponseException(HttpStatusCode.BadRequest);
                 }
-
+                
                 throw new HttpResponseException(HttpStatusCode.InternalServerError);
             }
         }
