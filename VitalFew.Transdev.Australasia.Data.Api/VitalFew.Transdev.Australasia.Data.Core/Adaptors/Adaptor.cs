@@ -13,16 +13,16 @@ namespace VitalFew.Transdev.Australasia.Data.Core.Adaptors
     /// <summary>
     /// The 'Abstraction' class
     /// </summary>
-    public class Adaptor
+    public class Adaptor<T> where T : IParameters
     {
-        protected IProcessor processor;
+        protected IProcessor<T> processor;
 
-        public IProcessor Processor
+        public IProcessor<T> Processor
         {
             set { processor = value; }
         }
 
-        public virtual QueryResult<DataTable> Execute(IParameters parameters)
+        public virtual QueryResult<DataTable> Execute(T parameters)
         {
             return processor.Execute(parameters);
         }

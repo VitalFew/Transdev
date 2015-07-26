@@ -15,12 +15,12 @@ namespace VitalFew.Transdev.Australasia.Data.Core.Adaptors
     /// <summary>
     /// The 'RefinedAbstraction' class
     /// </summary>
-    public class SqlServerTableAdaptor : IProcessor
+    public class SqlServerTableAdaptor<T> : IProcessor<ISqlServerTableParameters>  where T : ISqlServerTableParameters
     {
 
         string _queryTemplate = "SELECT * FROM {0}.{1};";
 
-        public override QueryResult<DataTable> Execute(IParameters parameters)
+        public override QueryResult<DataTable> Execute(ISqlServerTableParameters parameters)
         {
             var sqlConnection = new SqlConnection();
             

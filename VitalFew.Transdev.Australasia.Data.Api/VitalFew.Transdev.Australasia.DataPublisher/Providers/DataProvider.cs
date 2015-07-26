@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web;
 using VitalFew.Transdev.Australasia.Data.Core.Adaptors;
 using VitalFew.Transdev.Australasia.Data.Core.Parameters;
+using VitalFew.Transdev.Australasia.Data.Core.Parameters.Interfaces;
 using VitalFew.Transdev.Australasia.Data.Core.Result;
 using VitalFew.Transdev.Australasia.DataPublisher.Models.Database;
 using VitalFew.Transdev.Australasia.DataPublisher.Providers.Contract;
@@ -24,7 +25,7 @@ namespace VitalFew.Transdev.Australasia.DataPublisher.Providers
         {
             using (var context = new Models.Database.Entities())
             {
-                Adaptor adaptor = new BaseAdaptor();
+                var adaptor = new SqlServerTableAdaptor<ISqlServerTableParameters>();
 
                 var parameters = new SqlServerTableParameters();
                 parameters.UserID = client.DB_USER;
@@ -34,7 +35,6 @@ namespace VitalFew.Transdev.Australasia.DataPublisher.Providers
                 parameters.IntegratedSecurity = client.DB_INTEGRATED_SECURITY;
                 parameters.ObjectName = client.DB_OBJECT_NAME;
 
-                adaptor.Processor = new SqlServerTableAdaptor();
                 return adaptor.Execute(parameters);
             }
         }

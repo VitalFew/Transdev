@@ -12,8 +12,8 @@ namespace VitalFew.Transdev.Australasia.Data.Core.Processor
     /// <summary>
     /// The 'Implementor' abstract class
     /// </summary>
-    public abstract class IProcessor
+    public abstract class IProcessor<T> where T : IParameters
     {
-        public abstract QueryResult<DataTable> Execute(IParameters parameters);
+        public abstract QueryResult<DataTable> Execute(T parameters);
     }
 }
