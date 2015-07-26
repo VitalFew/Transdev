@@ -25,7 +25,7 @@ namespace VitalFew.Transdev.Australasia.DataPublisher.Providers
         {
             using (var context = new Models.Database.Entities())
             {
-                var adaptor = new SqlServerTableAdaptor<ISqlServerTableParameters>();
+                var adaptor = new SqlServerTableAdaptor();
 
                 var parameters = new SqlServerTableParameters();
                 parameters.UserID = client.DB_USER;
