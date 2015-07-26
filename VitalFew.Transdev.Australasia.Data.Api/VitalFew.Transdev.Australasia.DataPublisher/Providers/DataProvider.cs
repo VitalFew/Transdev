@@ -34,6 +34,7 @@ namespace VitalFew.Transdev.Australasia.DataPublisher.Providers
                 parameters.InitialCatalog = client.DB_NAME;
                 parameters.IntegratedSecurity = client.DB_INTEGRATED_SECURITY;
                 parameters.ObjectName = client.DB_OBJECT_NAME;
+                parameters.SchemaName = client.DB_SCHEMA;
 
                 return adaptor.Execute(parameters);
             }
