@@ -15,7 +15,7 @@ namespace VitalFew.Transdev.Australasia.Data.Core.Adaptors
     /// <summary>
     /// The 'RefinedAbstraction' class
     /// </summary>
-    public class SqlServerTableAdaptor : IProcessor<ISqlServerTableParameters> 
+    public class SqlServerTableAdaptor : Adaptor<ISqlServerTableParameters> 
     {
 
         string _queryTemplate = "SELECT * FROM {0}.{1};";
@@ -25,20 +25,20 @@ namespace VitalFew.Transdev.Australasia.Data.Core.Adaptors
             var sqlConnection = new SqlConnection();
             
             var sqlConnectionStringBuilder = new SqlConnectionStringBuilder();
-            sqlConnectionStringBuilder.UserID = ((SqlServerTableParameters)parameters).UserID;
-            sqlConnectionStringBuilder.Password = ((SqlServerTableParameters)parameters).Password;
-            sqlConnectionStringBuilder.InitialCatalog = ((SqlServerTableParameters)parameters).InitialCatalog;
-            sqlConnectionStringBuilder.DataSource = ((SqlServerTableParameters)parameters).DataSource;
+            sqlConnectionStringBuilder.UserID = parameters.UserID;
+            sqlConnectionStringBuilder.Password = parameters.Password;
+            sqlConnectionStringBuilder.InitialCatalog = parameters.InitialCatalog;
+            sqlConnectionStringBuilder.DataSource = parameters.DataSource;
 
             if (((SqlServerTableParameters)parameters).IntegratedSecurity.HasValue)
             {
-                sqlConnectionStringBuilder.IntegratedSecurity = ((SqlServerTableParameters)parameters).IntegratedSecurity.Value;
+                sqlConnectionStringBuilder.IntegratedSecurity = parameters.IntegratedSecurity.Value;
             }
 
             sqlConnection.ConnectionString = sqlConnectionStringBuilder.ConnectionString;
 
-            string query = string.Format(_queryTemplate, ((SqlServerTableParameters)parameters).SchemaName, 
-                ((SqlServerTableParameters)parameters).ObjectName);
+            string query = string.Format(_queryTemplate, parameters.SchemaName, 
+                parameters.ObjectName);
 
             using (SqlCommand cmd = new SqlCommand(query, sqlConnection))
             {
