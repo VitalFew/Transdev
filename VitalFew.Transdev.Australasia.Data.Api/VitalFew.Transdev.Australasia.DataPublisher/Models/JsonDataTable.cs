@@ -12,11 +12,11 @@ using VitalFew.Transdev.Australasia.Data.Core.Result;
 
 namespace VitalFew.Transdev.Australasia.DataPublisher.Models
 {
-    [JsonConverter(typeof(DataTableConverter))]
-    [XmlRoot("Result")]
+    //[JsonConverter(typeof(DataTableConverter))]
+    [XmlRoot("Data")]
     public class JsonDataTable : IXmlSerializable
     {
-        public JsonDataTable(TableObject datatable)
+        public JsonDataTable(QueryResult<DataTable> datatable)
         {
             this.Data = datatable;
         }
@@ -55,6 +55,6 @@ namespace VitalFew.Transdev.Australasia.DataPublisher.Models
             return node.InnerXml;
         }
 
-        public TableObject Data { get; set; }
+        public QueryResult<DataTable> Data { get; set; }
     }
 }

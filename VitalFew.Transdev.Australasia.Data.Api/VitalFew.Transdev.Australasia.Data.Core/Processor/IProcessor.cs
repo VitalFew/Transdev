@@ -14,6 +14,6 @@ namespace VitalFew.Transdev.Australasia.Data.Core.Processor
     /// </summary>
     public abstract class IProcessor
     {
-        public abstract TableObject Execute(IParameters parameters);
+        public abstract QueryResult<DataTable> Execute(IParameters parameters);
     }
 }

@@ -8,9 +8,9 @@ using System.Xml.Serialization;
 
 namespace VitalFew.Transdev.Australasia.Data.Core.Result
 {
-    public class TableObject
+    public class QueryResult<T>
     {
-        public DataTable Result { get; set; }
+        public T Result { get; set; }
 
         public int RecordCount { get; set; }
     }

@@ -13,7 +13,7 @@ namespace VitalFew.Transdev.Australasia.DataPublisher.Providers
 {
     public class DataProvider : IDataProvider
     {
-        public TableObject Execute(VF_API_CLIENT_OBJECTS client)
+        public QueryResult<DataTable> Execute(VF_API_CLIENT_OBJECTS client)
         {
             using (var context = new Models.Database.Entities())
             {

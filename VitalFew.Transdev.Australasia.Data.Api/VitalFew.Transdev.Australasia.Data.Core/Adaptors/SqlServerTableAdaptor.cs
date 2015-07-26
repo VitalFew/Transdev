@@ -18,9 +18,9 @@ namespace VitalFew.Transdev.Australasia.Data.Core.Adaptors
     public class SqlServerTableAdaptor : IProcessor
     {
 
-        string _queryTemplate = "SELECT * FROM {0}.{1}";
+        string _queryTemplate = "SELECT * FROM {0}.{1};";
 
-        public override TableObject Execute(IParameters parameters)
+        public override QueryResult<DataTable> Execute(IParameters parameters)
         {
             var sqlConnection = new SqlConnection();
             
@@ -48,7 +48,7 @@ namespace VitalFew.Transdev.Australasia.Data.Core.Adaptors
 
                 dataTable.TableName = ((SqlServerTableParameters)parameters).ObjectName;
 
-                var obj = new TableObject();
+                var obj = new QueryResult<DataTable>();
 
                 obj.Result = dataTable;
                 obj.RecordCount = dataTable.Rows.Count;

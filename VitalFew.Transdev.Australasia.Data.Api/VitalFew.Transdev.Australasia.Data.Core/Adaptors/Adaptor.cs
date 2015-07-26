@@ -22,7 +22,7 @@ namespace VitalFew.Transdev.Australasia.Data.Core.Adaptors
             set { processor = value; }
         }
 
-        public virtual TableObject Execute(IParameters parameters)
+        public virtual QueryResult<DataTable> Execute(IParameters parameters)
         {
             return processor.Execute(parameters);
         }

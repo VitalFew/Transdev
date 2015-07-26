@@ -14,7 +14,7 @@ namespace VitalFew.Transdev.Australasia.Data.Core.Adaptors
     /// </summary>
     public class BaseAdaptor : Adaptor
     {
-        public override TableObject Execute(IParameters parameters)
+        public override QueryResult<DataTable> Execute(IParameters parameters)
         {
             return processor.Execute(parameters);
         }
