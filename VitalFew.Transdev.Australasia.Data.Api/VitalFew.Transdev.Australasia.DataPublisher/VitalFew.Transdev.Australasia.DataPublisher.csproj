@@ -260,7 +260,6 @@
     <Compile Include="Providers\ConfigurationProvider.cs" />
     <Compile Include="Providers\Contract\IDataProvider.cs" />
     <Compile Include="Providers\DataProvider.cs" />
-    <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>

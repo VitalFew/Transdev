@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using VitalFew.Transdev.Australasia.DataPublisher.Models.Database;
 using VitalFew.Transdev.Australasia.DataPublisher.Providers.Contract;
@@ -11,7 +12,14 @@ namespace VitalFew.Transdev.Australasia.DataPublisher.Providers
 {
     public class ConfigurationProvider : IConfigurationProvider
     {
-        public VF_API_CLIENT_OBJECTS Get(Guid clientId, string parama)
+
+        /// <summary>
+        /// Get Configuration
+        /// </summary>
+        /// <param name="clientId">Guid</param>
+        /// <param name="param">string</param>
+        /// <returns>VF_API_CLIENT_OBJECTS</returns>
+        public async Task<VF_API_CLIENT_OBJECTS> Get(Guid clientId, string parama)
         {
             using (var context = new Models.Database.Entities())
             {

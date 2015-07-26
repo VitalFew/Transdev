@@ -10,6 +10,10 @@ namespace VitalFew.Transdev.Australasia.DataPublisher.Providers
 {
     public class AuthorizationProvider : IAuthorizationProvider
     {
+        
+        /// <summary>
+        /// Instance of System.Security.Claims
+        /// </summary>
         public Claim Claim
         {
             get
@@ -19,6 +23,12 @@ namespace VitalFew.Transdev.Australasia.DataPublisher.Providers
             }
         }
 
+        /// <summary>
+        /// Get API Claims Identity
+        /// </summary>
+        /// <param name="clientId">string</param>
+        /// <param name="clientToken">string</param>
+        /// <returns>ClaimsIdentity</returns>
         public ClaimsIdentity ValidateAuthentication(string clientName, string clientToken)
         {
             //Check your api key and secret here

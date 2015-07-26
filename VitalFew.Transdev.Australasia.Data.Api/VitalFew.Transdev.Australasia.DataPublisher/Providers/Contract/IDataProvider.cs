@@ -11,6 +11,12 @@ namespace VitalFew.Transdev.Australasia.DataPublisher.Providers.Contract
 {
     public interface IDataProvider
     {
-        QueryResult<DataTable> Execute(VF_API_CLIENT_OBJECTS clients);
+
+        /// <summary>
+        /// Execute DataProvide
+        /// </summary>
+        /// <param name="clients">VF_API_CLIENT_OBJECTS</param>
+        /// <returns>QueryResult of DataTable</returns>
+        Task<QueryResult<DataTable>> Execute(VF_API_CLIENT_OBJECTS clients);
     }
 }

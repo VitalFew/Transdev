@@ -15,17 +15,27 @@ using VitalFew.Transdev.Australasia.DataPublisher.Providers.Contract;
 
 namespace VitalFew.Transdev.Australasia.DataPublisher.Controllers
 {
-
-    //[Authorize]
+    /// <summary>
+    /// ValuesController Class
+    /// </summary>
     public class ValuesController : ApiBaseController
     {
+        /// <summary>
+        ///  Instance of DataProvider
+        /// </summary>
         IDataProvider _dataProvider;
+
+        /// <summary>
+        ///  Instance of ConfigurationProvider
+        /// </summary>
         IConfigurationProvider _configurationProvider;
 
         /// <summary>
         /// Values Controller
         /// </summary>
-        public ValuesController(IAuthorizationProvider authorizationProvider, IDataProvider dataProvider,
+        public ValuesController(
+            IAuthorizationProvider authorizationProvider, 
+            IDataProvider dataProvider,
             IConfigurationProvider configurationProvider) : 
             base(authorizationProvider)
         {
@@ -38,15 +48,15 @@ namespace VitalFew.Transdev.Australasia.DataPublisher.Controllers
         /// </summary>
         /// <param name="query">string</param>
         /// <returns></returns>
-        public JsonDataTable Get(string query)
+        public async Task<JsonDataTable> Get(string query)
         {
             try
             {
-                var configuration = _configurationProvider.Get(ClientId, query);
+                var configuration = await _configurationProvider.Get(ClientId, query);
 
                 if (configuration != null)
                 {
-                    var dataTable = _dataProvider.Execute(configuration);
+                    var dataTable = await _dataProvider.Execute(configuration);
 
                     var jsonDataTable = new JsonDataTable(dataTable);
                     return jsonDataTable;

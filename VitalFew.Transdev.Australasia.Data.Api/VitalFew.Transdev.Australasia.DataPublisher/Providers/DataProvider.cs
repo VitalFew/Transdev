@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using VitalFew.Transdev.Australasia.Data.Core.Adaptors;
 using VitalFew.Transdev.Australasia.Data.Core.Parameters;
@@ -13,7 +14,13 @@ namespace VitalFew.Transdev.Australasia.DataPublisher.Providers
 {
     public class DataProvider : IDataProvider
     {
-        public QueryResult<DataTable> Execute(VF_API_CLIENT_OBJECTS client)
+
+        /// <summary>
+        /// Execute DataProvide
+        /// </summary>
+        /// <param name="clients">VF_API_CLIENT_OBJECTS</param>
+        /// <returns>QueryResult of DataTable</returns>
+        public async Task<QueryResult<DataTable>> Execute(VF_API_CLIENT_OBJECTS client)
         {
             using (var context = new Models.Database.Entities())
             {

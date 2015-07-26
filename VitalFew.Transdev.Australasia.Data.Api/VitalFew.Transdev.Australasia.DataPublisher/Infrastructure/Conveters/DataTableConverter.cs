@@ -8,19 +8,40 @@ using VitalFew.Transdev.Australasia.DataPublisher.Models;
 
 namespace VitalFew.Transdev.Australasia.DataPublisher.Infrastructure.Conveters
 {
+    /// <summary>
+    /// DataTableConverter Class
+    /// </summary>
     public class DataTableConverter : JsonConverter
     {
-
+        /// <summary>
+        /// Can Convert
+        /// </summary>
+        /// <param name="objectType">Type</param>
+        /// <returns>bool</returns>
         public override bool CanConvert(Type objectType)
         {
             return typeof(JsonDataTable).IsAssignableFrom(objectType);
         }
 
+        /// <summary>
+        /// Read Json
+        /// </summary>
+        /// <param name="reader">JsonReader</param>
+        /// <param name="objectType">Type</param>
+        /// <param name="existingValue">object</param>
+        /// <param name="serializer">JsonSerializer</param>
+        /// <returns></returns>
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Write Json
+        /// </summary>
+        /// <param name="writer">JsonWriter</param>
+        /// <param name="value">object</param>
+        /// <param name="serializer">JsonSerializer</param>
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             JsonDataTable myDataTable = value as JsonDataTable;

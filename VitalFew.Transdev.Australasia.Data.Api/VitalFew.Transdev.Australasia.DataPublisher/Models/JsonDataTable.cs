@@ -16,11 +16,20 @@ namespace VitalFew.Transdev.Australasia.DataPublisher.Models
     [XmlRoot("Data")]
     public class JsonDataTable : IXmlSerializable
     {
+
+        /// <summary>
+        /// JsonDataTable
+        /// </summary>
+        /// <param name="datatable">QueryResult of DataTable</param>
         public JsonDataTable(QueryResult<DataTable> datatable)
         {
             this.Data = datatable;
         }
 
+        /// <summary>
+        /// Write Xml
+        /// </summary>
+        /// <param name="writer">XmlWriter</param>
         public void WriteXml(XmlWriter writer)
         {
             writer.WriteAttributeString("RecordCount", this.Data.RecordCount.ToString());
@@ -37,16 +46,29 @@ namespace VitalFew.Transdev.Australasia.DataPublisher.Models
             }
         }
 
+        /// <summary>
+        /// Get Schema
+        /// </summary>
+        /// <returns></returns>
         public XmlSchema GetSchema()
         {
             return null;
         }
 
+        /// <summary>
+        /// Read Xml
+        /// </summary>
+        /// <param name="reader"></param>
         public void ReadXml(XmlReader reader)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Xml Escape
+        /// </summary>
+        /// <param name="unescaped"></param>
+        /// <returns></returns>
         private string XmlEscape(string unescaped)
         {
             XmlDocument doc = new XmlDocument();
@@ -55,6 +77,9 @@ namespace VitalFew.Transdev.Australasia.DataPublisher.Models
             return node.InnerXml;
         }
 
+        /// <summary>
+        /// QueryResult of DataTable
+        /// </summary>
         public QueryResult<DataTable> Data { get; set; }
     }
 }

@@ -6,25 +6,33 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Mvc;
 using VitalFew.Transdev.Australasia.DataPublisher.Providers.Contract;
 
 namespace VitalFew.Transdev.Australasia.DataPublisher.Controllers
 {
-
-    //[Authorize]
+    /// <summary>
+    /// ApiBaseController Class
+    /// </summary>
     public class ApiBaseController : ApiController
     {
 
+        /// <summary>
+        /// Instance of AuthorizationProvider
+        /// </summary>
         IAuthorizationProvider _authorizationProvider;
 
         /// <summary>
-        /// Values Controller
+        /// Api Base Controller Controller
         /// </summary>
         public ApiBaseController(IAuthorizationProvider authorizationProvider)
         {
             _authorizationProvider = authorizationProvider;
         }
 
+        /// <summary>
+        /// Client Id
+        /// </summary>
         public Guid ClientId
         {
             get

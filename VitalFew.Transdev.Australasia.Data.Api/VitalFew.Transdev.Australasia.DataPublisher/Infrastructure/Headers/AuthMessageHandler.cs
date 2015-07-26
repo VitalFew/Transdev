@@ -9,12 +9,22 @@ using VitalFew.Transdev.Australasia.DataPublisher.Providers;
 
 namespace VitalFew.Transdev.Australasia.DataPublisher.Infrastructure.Headers
 {
+
+    /// <summary>
+    /// Authorization Message Handler
+    /// </summary>
     public class AuthMessageHandler : DelegatingHandler
     {
 
         private const string clientIdHeader = "clientid";
         private const string clientTokenHeader = "clienttoken";
 
+        /// <summary>
+        /// SendAsync
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         protected override System.Threading.Tasks.Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, System.Threading.CancellationToken cancellationToken)
         {
             IEnumerable<string> clientIdValues;
