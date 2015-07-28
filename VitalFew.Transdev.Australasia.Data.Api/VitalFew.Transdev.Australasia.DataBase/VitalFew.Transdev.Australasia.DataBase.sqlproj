@@ -61,10 +61,10 @@
     <Folder Include="dbo\Tables\" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="dbo\Tables\VF_API_CLIENT_OBJECTS.sql" />
-    <Build Include="dbo\Tables\VF_API_CATALOG_CLIENTS.sql" />
+    <PostDeploy Include="dbo\Script.PostDeployment.sql" />
   </ItemGroup>
   <ItemGroup>
-    <PostDeploy Include="dbo\Script.PostDeployment.sql" />
+    <Build Include="dbo\Tables\VF_API_CLIENT_OBJECTS.sql" />
+    <Build Include="dbo\Tables\VF_API_CATALOG_CLIENTS.sql" />
   </ItemGroup>
 </Project>
