@@ -83,6 +83,5 @@ namespace VitalFew.Transdev.Australasia.DataPublisher.Controllers
                 throw new HttpResponseException(HttpStatusCode.InternalServerError);
             }
         }
-
     }
 }

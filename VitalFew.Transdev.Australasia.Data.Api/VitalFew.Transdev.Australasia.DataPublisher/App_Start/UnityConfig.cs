@@ -18,6 +18,7 @@ namespace VitalFew.Transdev.Australasia.DataPublisher
             container.RegisterType<IAuthorizationProvider, AuthorizationProvider>();
             container.RegisterType<IConfigurationProvider, ConfigurationProvider>();
             container.RegisterType<IDataProvider, DataProvider>();
+            container.RegisterType<ICatalogClientProvider, CatalogClientProvider>();
 
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
         }
