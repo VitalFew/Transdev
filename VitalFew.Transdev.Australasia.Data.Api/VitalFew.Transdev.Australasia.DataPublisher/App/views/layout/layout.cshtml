@@ -1,0 +1,29 @@
+﻿@inherits System.Web.Mvc.WebViewPage
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body ng-app="app">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <div class="navbar-brand">VitalView</div>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div ng-include="'App/views/catalogClients/catalogClientList.cshtml'"></div>
+    </div>
+    <!-- Library Scripts -->
+    <script src="scripts/angular.js"></script>
+    <!-- Application Script -->
+    <script src="app/app.js"></script>
+    <!-- Services -->
+    <!-- Product Controllers -->
+    <script src="App/views/catalogClients/catalogClientListCtrl.js"></script>
+</body>
+</html>

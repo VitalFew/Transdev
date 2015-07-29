@@ -20,9 +20,7 @@ namespace VitalFew.Transdev.Australasia.DataPublisher.Controllers
 
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
-
-            return View();
+            return View("~/App/views/layout/layout.cshtml");
         }
     }
 }

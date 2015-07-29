@@ -1,0 +1,27 @@
+﻿<div class="panel panel-primary"
+     ng-controller="catalogClientList as vm">
+    <div class="panel-heading"
+         style="font-size:large">
+        Catalog List
+    </div>
+    <div class="panel-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Name</td>
+                    <td>Token</td>
+                    <td>Status</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="catalog in vm.catalogs">
+                    <td>{{ catalog.clientId}}</td>
+                    <td>{{ catalog.clientName }}</td>
+                    <td>{{ catalog.clientToken }}</td>
+                    <td>{{ catalog.clientStatus }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
