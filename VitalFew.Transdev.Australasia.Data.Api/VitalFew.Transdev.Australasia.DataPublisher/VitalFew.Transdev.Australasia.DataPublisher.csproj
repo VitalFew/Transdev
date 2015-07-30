@@ -227,6 +227,7 @@
     <Compile Include="Controllers\CatalogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ApiBaseController.cs" />
+    <Compile Include="Controllers\ScriptController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -256,6 +257,12 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\JsonDataTable.cs" />
+    <Compile Include="Navigation\Contract\INavigationManager.cs" />
+    <Compile Include="Navigation\Contract\INavigationScriptManager.cs" />
+    <Compile Include="Navigation\NavigationManager.cs" />
+    <Compile Include="Navigation\NavigationScriptManager.cs" />
+    <Compile Include="Navigation\UserMenu.cs" />
+    <Compile Include="Navigation\UserMenuItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\AuthorizationProvider.cs" />
     <Compile Include="Providers\CatalogClientProvider.cs" />
@@ -272,6 +279,7 @@
     <Content Include="App\common\catalogResource.js" />
     <Content Include="App\common\common.services.js" />
     <Content Include="App\views\catalogClients\catalogClientListCtrl.js" />
+    <Content Include="App\views\layout\header.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -362,6 +370,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="App\views\catalogClients\catalogClientList.cshtml" />
+    <Content Include="App\views\layout\header.cshtml" />
     <None Include="Properties\PublishProfiles\Deploy.pubxml" />
     <Content Include="Scripts\errors.json" />
     <Content Include="Scripts\angular.min.js.map" />
@@ -1129,6 +1138,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Vtad\vtad.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1149,6 +1159,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Script\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -1,6 +1,8 @@
 using Microsoft.Practices.Unity;
 using System.Web.Http;
 using Unity.WebApi;
+using VitalFew.Transdev.Australasia.DataPublisher.Navigation;
+using VitalFew.Transdev.Australasia.DataPublisher.Navigation.Contract;
 using VitalFew.Transdev.Australasia.DataPublisher.Providers;
 using VitalFew.Transdev.Australasia.DataPublisher.Providers.Contract;
 
@@ -19,6 +21,8 @@ namespace VitalFew.Transdev.Australasia.DataPublisher
             container.RegisterType<IConfigurationProvider, ConfigurationProvider>();
             container.RegisterType<IDataProvider, DataProvider>();
             container.RegisterType<ICatalogClientProvider, CatalogClientProvider>();
+            container.RegisterType<INavigationManager, NavigationManager>();
+            container.RegisterType<INavigationScriptManager, NavigationScriptManager>();
 
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
         }

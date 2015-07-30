@@ -6,27 +6,26 @@
     <meta name="viewport" content="width=device-width" />
     <title></title>
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
-</head>
-<body ng-app="app">
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <div class="navbar-brand">VitalView</div>
-            </div>
-        </div>
-    </nav>
-    <div class="container">
-        <div ng-include="'App/views/catalogClients/catalogClientList.cshtml'"></div>
-    </div>
     <!-- Library Scripts -->
     <script src="scripts/angular.js"></script>
     <script src="~/Scripts/angular-resource.js"></script>
+    <script src="~/Scripts/angular-ui-router.js"></script>
     <!-- Application Script -->
     <script src="app/app.js"></script>
+    <script src="~/Vtad/vtad.js"></script>
     <script src="~/App/common/common.services.js"></script>
     <script src="~/App/common/catalogResource.js"></script>
+    <script src="~/Script/GetScripts" type="text/javascript"> </script>
     <!-- Services -->
     <!-- Product Controllers -->
+    <script src="~/App/views/layout/header.js"></script>
     <script src="App/views/catalogClients/catalogClientListCtrl.js"></script>
+</head>
+<body ng-app="app">
+    <div ng-include="'/App/views/layout/header.cshtml'"></div>
+    <br/><br /><br />
+    <div class="container">
+        <div ui-view></div>
+    </div>
 </body>
 </html>
