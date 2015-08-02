@@ -14,7 +14,7 @@
         $http.defaults.headers.common['clientid'] = 'KEAZ';
         $http.defaults.headers.common['clienttoken'] = '123ADDDEEE';
 
-        if (catalogId===0) {
+        if (catalogId!=="0") {
         catalogResource.get({ id: catalogId }, function (data) {
             vm.catalog = data;
             vm.catalog.ClientStatus = vm.catalog.ClientStatus === "Active" ? true : false;
