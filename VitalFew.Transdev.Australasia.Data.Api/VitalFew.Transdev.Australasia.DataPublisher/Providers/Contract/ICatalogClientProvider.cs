@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using VitalFew.Transdev.Australasia.DataPublisher.Models.Database;
 
 namespace VitalFew.Transdev.Australasia.DataPublisher.Providers.Contract
@@ -10,6 +9,6 @@ namespace VitalFew.Transdev.Australasia.DataPublisher.Providers.Contract
         /// Gets all.
         /// </summary>
         /// <returns></returns>
-        Task<List<VF_API_CATALOG_CLIENTS>> GetAll();
+        IQueryable<VF_API_CATALOG_CLIENTS> GetAll();
     }
 }

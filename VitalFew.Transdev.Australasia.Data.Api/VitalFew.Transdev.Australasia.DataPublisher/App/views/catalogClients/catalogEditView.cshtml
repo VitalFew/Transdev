@@ -1,0 +1,94 @@
+﻿<form class="form-horizontal" name="catalogForm"  novalidate ng-controller="catalogEditCtrl as vm">
+    <fieldset>
+        <legend>Catalog Information</legend>
+        <div class="form-group">
+            <label class="col-md-2 control-label"
+                   for="inputClientId">Client ID</label>
+
+            <div class="col-md-4">
+                <input class="form-control"
+                       id="inputClientId"
+                       name="inputClientId"
+                       type="text"
+                       placeholder="Client ID (required)"
+                       ng-model="vm.catalog.ClientId"
+                       required/>
+            </div>
+            <span class="help-block has-error">
+                <span ng-show="catalogForm.inputClientId.$error.required">
+                    Client id is required.
+                </span>
+            </span>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label"
+                   for="inputClientName">Client Name</label>
+
+            <div class="col-md-4">
+                <input class="form-control"
+                       id="inputClientName"
+                       name="inputClientName"
+                       type="text"
+                       placeholder="Client Name (required)"
+                       ng-model="vm.catalog.ClientName"
+                       required />
+            </div>
+            <span class="help-block has-error">
+                <span ng-show="catalogForm.inputClientName.$error.required">
+                    Client name is required.
+                </span>
+            </span>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label"
+                   for="inputClientToken">Client Token</label>
+
+            <div class="col-md-4">
+                <input class="form-control"
+                       id="inputClientToken"
+                       name="inputClientToken"
+                       type="text"
+                       placeholder="Client Token (required)"
+                       ng-model="vm.catalog.ClientToken"
+                       required />
+            </div>
+            <span class="help-block has-error">
+                <span ng-show="catalogForm.inputClientToken.$error.required">
+                    Client Token is required.
+                </span>
+            </span>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label"
+                   for="inputClientStatus">Client Status</label>
+
+            <div class="col-md-4">
+                <input class="form-control"
+                       id="inputClientStatus"
+                       name="inputClientStatus"
+                       type="checkbox"
+                       ng-model="vm.catalog.ClientStatus"
+                       required />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-4 col-md-offset-2">
+                <span>
+                    <button class="btn btn-primary"
+                            style="width:80px;margin-right:10px"
+                            ng-click="vm.submit(productForm.$valid)"
+                            ng-disabled="productForm.$invalid">
+                        Save
+                    </button>
+                </span>
+                <span>
+                    <button class="btn btn-default"
+                            style="width:70px"
+                            ng-click="vm.cancel()">
+                        Cancel
+                    </button>
+                </span>
+            </div>
+        </div>
+        </fieldset>
+    </form>

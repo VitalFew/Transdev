@@ -7,11 +7,12 @@
     <title></title>
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <!-- Library Scripts -->
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
     <script src="scripts/angular.js"></script>
     <script src="~/Scripts/angular-resource.js"></script>
     <script src="~/Scripts/angular-ui-router.js"></script>
     <!-- Application Script -->
-    <script src="app/app.js"></script>
+    <script src="~/App/app.js"></script>
     <script src="~/Vtad/vtad.js"></script>
     <script src="~/App/common/common.services.js"></script>
     <script src="~/App/common/catalogResource.js"></script>
@@ -19,7 +20,9 @@
     <!-- Services -->
     <!-- catalog Controllers -->
     <script src="~/App/views/layout/header.js"></script>
-    <script src="App/views/catalogClients/catalogClientListCtrl.js"></script>
+    <script src="~/App/views/catalogClients/catalogClientListCtrl.js"></script>
+    <script src="~/App/views/catalogClients/catalogDetailCtrl.js"></script>
+    <script src="~/App/views/catalogClients/catalogEditCtrl.js"></script>
 </head>
 <body ng-app="app">
     <div ng-include="'/App/views/layout/header.cshtml'"></div>

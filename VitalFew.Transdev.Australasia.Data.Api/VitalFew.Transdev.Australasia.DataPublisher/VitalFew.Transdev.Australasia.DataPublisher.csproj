@@ -279,6 +279,8 @@
     <Content Include="App\common\catalogResource.js" />
     <Content Include="App\common\common.services.js" />
     <Content Include="App\views\catalogClients\catalogClientListCtrl.js" />
+    <Content Include="App\views\catalogClients\catalogDetailCtrl.js" />
+    <Content Include="App\views\catalogClients\catalogEditCtrl.js" />
     <Content Include="App\views\layout\header.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -371,6 +373,8 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="App\views\catalogClients\catalogClientList.cshtml" />
     <Content Include="App\views\layout\header.cshtml" />
+    <Content Include="App\views\catalogClients\catalogDetailView.cshtml" />
+    <Content Include="App\views\catalogClients\catalogEditView.cshtml" />
     <None Include="Properties\PublishProfiles\Deploy.pubxml" />
     <Content Include="Scripts\errors.json" />
     <Content Include="Scripts\angular.min.js.map" />

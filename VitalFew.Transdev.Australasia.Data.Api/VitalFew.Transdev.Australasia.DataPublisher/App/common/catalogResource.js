@@ -6,7 +6,7 @@
          .factory("catalogResource", ["$resource", catalogResource])
 
     function catalogResource($resource) {
-        return $resource("/api/catalog");
+        return $resource("/api/catalog/:catalogId");
     }
 
 }());

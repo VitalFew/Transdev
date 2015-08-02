@@ -1,0 +1,41 @@
+﻿<div class="panel panel-primary" ng-controller="catalogDetailCtrl as vm">
+    <div class="panel-heading" style="font-size:large">
+        {{vm.title}}
+    </div>
+
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-2">Client Id:</div>
+                    <div class="col-md-6">{{vm.catalog.ClientId}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">Client Name:</div>
+                    <div class="col-md-6">{{vm.catalog.ClientName }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">Client Token:</div>
+                    <div class="col-md-6">{{vm.catalog.ClientToken }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">Client Status:</div>
+                    <div class="col-md-6">{{vm.catalog.ClientStatus }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer">
+        <a class="btn btn-default"
+           ui-sref="home"
+           style="width:80px">
+            <I class="glyphicon glyphicon-chevron-left"></I>
+            Back
+        </a>
+        <a class="btn btn-primary"
+           ui-sref="catelogEdit({catalogId: vm.catalog.Id})"
+           style="width:80px;margin-left:10px">
+            Edit
+        </a>
+    </div>
+</div>

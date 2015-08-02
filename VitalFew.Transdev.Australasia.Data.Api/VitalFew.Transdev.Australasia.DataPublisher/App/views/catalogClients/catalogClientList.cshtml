@@ -15,7 +15,7 @@
             </thead>
             <tbody>
                 <tr ng-repeat="catalog in vm.catalogs">
-                    <td>{{ catalog.ClientId}}</td>
+                    <td><a ui-sref="catelogDetail({catalogId: catalog.Id})">{{ catalog.ClientId}}</a></td>
                     <td>{{ catalog.ClientName }}</td>
                     <td>{{ catalog.ClientToken }}</td>
                     <td>{{ catalog.ClientStatus }}</td>

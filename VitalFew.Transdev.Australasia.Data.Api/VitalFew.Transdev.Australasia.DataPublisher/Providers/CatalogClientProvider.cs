@@ -13,12 +13,10 @@ namespace VitalFew.Transdev.Australasia.DataPublisher.Providers
         /// Gets all.
         /// </summary>
         /// <returns></returns>
-        public async Task<List<VF_API_CATALOG_CLIENTS>> GetAll()
+        public IQueryable<VF_API_CATALOG_CLIENTS> GetAll()
         {
-            using (var context = new Entities())
-            {
-                return await context.VF_API_CATALOG_CLIENTS.AsQueryable().ToListAsync();
-            }
+            var context = new Entities();
+            return context.VF_API_CATALOG_CLIENTS.AsQueryable();
         }
     }
 }

@@ -12,7 +12,17 @@
             url: "/",
             templateUrl: "/App/views/catalogClients/catalogClientList.cshtml",
             controller: "catalogClientListCtrl as vm",
-             menu: "Home"
+            menu: "Home"
+        }).state("catelogDetail", {
+            url: "/catalog/:catalogId",
+            templateUrl: "/App/views/catalogClients/catalogDetailView.cshtml",
+            controller: "catalogDetailCtrl as vm",
+            menu: "Detail"
+        }).state("catelogEdit", {
+            url: "/catalog/edit/:catalogId",
+            templateUrl: "/App/views/catalogClients/catalogEditView.cshtml",
+            controller: "catalogEditCtrl as vm",
+            menu: "Detail"
         });
     }]);
 
