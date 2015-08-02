@@ -14,17 +14,19 @@
         $http.defaults.headers.common['clientid'] = 'KEAZ';
         $http.defaults.headers.common['clienttoken'] = '123ADDDEEE';
 
+        if (catalogId===0) {
         catalogResource.get({ id: catalogId }, function (data) {
             vm.catalog = data;
             vm.catalog.ClientStatus = vm.catalog.ClientStatus === "Active" ? true : false;
             vm.title = "Catalog Client Name: " + vm.catalog.ClientName;
         });
+        }
          
         vm.submit = function (isValid) {
-            alert(isValid);
             if (isValid) {
+                vm.catalog.ClientStatus = vm.catalog.ClientStatus === true ? "Active" : "Inactive";
                 catalogResource.save(vm.catalog, function (data) {
-                    alert(data)
+                    $state.go('home');
                 })
             }
         }

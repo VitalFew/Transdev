@@ -19,19 +19,20 @@ namespace VitalFew.Transdev.Australasia.DataPublisher.Providers
             return context.VF_API_CATALOG_CLIENTS.AsQueryable();
         }
 
-        /// <summary>
-        /// Saves the specified client.
-        /// </summary>
-        /// <param name="client">The client.</param>
-        /// <returns></returns>
         public async Task<int> Save(VF_API_CATALOG_CLIENTS client)
         {
             using (var context = new Entities())
             {
-                context.Entry(client).State = System.Data.Entity.EntityState.Modified;
-                var id = await context.SaveChangesAsync();
+                if (client.TRANSDEV_ID == 0)
+                {
+                    context.Entry(client).State = EntityState.Added;
+                }
+                else
+                {
+                    context.Entry(client).State = EntityState.Modified;
+                }
 
-                return id;
+                return await context.SaveChangesAsync();
             }
         }
     }
