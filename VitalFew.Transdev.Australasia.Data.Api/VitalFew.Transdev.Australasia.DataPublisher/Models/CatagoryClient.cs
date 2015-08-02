@@ -4,7 +4,7 @@ namespace VitalFew.Transdev.Australasia.DataPublisher.Models
 {
     public class CatagoryClient
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
 
         public Guid? ClientId { get; set; }
 
@@ -12,6 +12,6 @@ namespace VitalFew.Transdev.Australasia.DataPublisher.Models
 
         public string ClientToken { get; set; }
 
-        public bool? ClientStatus { get; set; }
+        public string ClientStatus { get; set; }
     }
 }

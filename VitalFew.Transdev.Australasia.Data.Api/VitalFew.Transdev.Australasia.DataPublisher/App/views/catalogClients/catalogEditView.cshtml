@@ -1,25 +1,6 @@
 ﻿<form class="form-horizontal" name="catalogForm"  novalidate ng-controller="catalogEditCtrl as vm">
     <fieldset>
-        <legend>Catalog Information</legend>
-        <div class="form-group">
-            <label class="col-md-2 control-label"
-                   for="inputClientId">Client ID</label>
-
-            <div class="col-md-4">
-                <input class="form-control"
-                       id="inputClientId"
-                       name="inputClientId"
-                       type="text"
-                       placeholder="Client ID (required)"
-                       ng-model="vm.catalog.ClientId"
-                       required/>
-            </div>
-            <span class="help-block has-error">
-                <span ng-show="catalogForm.inputClientId.$error.required">
-                    Client id is required.
-                </span>
-            </span>
-        </div>
+        <legend>Client Information</legend>
         <div class="form-group">
             <label class="col-md-2 control-label"
                    for="inputClientName">Client Name</label>
@@ -50,7 +31,8 @@
                        type="text"
                        placeholder="Client Token (required)"
                        ng-model="vm.catalog.ClientToken"
-                       required />
+                       required 
+                       minlength="20"/>
             </div>
             <span class="help-block has-error">
                 <span ng-show="catalogForm.inputClientToken.$error.required">
@@ -76,8 +58,8 @@
                 <span>
                     <button class="btn btn-primary"
                             style="width:80px;margin-right:10px"
-                            ng-click="vm.submit(productForm.$valid)"
-                            ng-disabled="productForm.$invalid">
+                            ng-click="vm.submit(catalogForm.$valid)"
+                            ng-disabled="catalogForm.$invalid">
                         Save
                     </button>
                 </span>

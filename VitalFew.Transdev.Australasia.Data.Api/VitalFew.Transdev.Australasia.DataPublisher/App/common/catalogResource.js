@@ -1,6 +1,6 @@
-﻿(function (){
+﻿(function () {
     "use strict"
-     
+
     angular
         .module("common.services")
          .factory("catalogResource", ["$resource", catalogResource])

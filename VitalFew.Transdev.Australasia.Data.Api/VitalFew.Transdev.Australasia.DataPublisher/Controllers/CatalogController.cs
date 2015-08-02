@@ -5,6 +5,7 @@ using VitalFew.Transdev.Australasia.DataPublisher.Common;
 using System.Collections.Generic;
 using System.Web.Http;
 using System.Data.Entity;
+using System;
 
 namespace VitalFew.Transdev.Australasia.DataPublisher.Controllers
 {
@@ -22,11 +23,22 @@ namespace VitalFew.Transdev.Australasia.DataPublisher.Controllers
         /// </summary>
         /// <param name="catalogId">The catalog identifier.</param>
         /// <returns></returns>
-        public async Task<CatagoryClient> Get(int id)
+        public async Task<CatagoryClient> Get(Guid id)
         {
-            var categories = await _catalogProvider.GetAll().FirstOrDefaultAsync(x => x.TRANSDEV_ID == id);
+            var categories = await _catalogProvider.GetAll().FirstOrDefaultAsync(x => x.CLIENT_ID.HasValue && x.CLIENT_ID.Value.Equals(id));
 
             return categories.GetClientDto();
+        }
+
+        /// <summary>
+        /// Puts the specified client.
+        /// </summary>
+        /// <param name="client">The client.</param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<int> Put(CatagoryClient client)
+        {
+            return await _catalogProvider.Save(client.GetCatalogClient());
         }
 
         /// <summary>

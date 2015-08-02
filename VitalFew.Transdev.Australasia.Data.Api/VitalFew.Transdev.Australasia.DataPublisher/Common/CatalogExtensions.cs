@@ -29,11 +29,22 @@ namespace VitalFew.Transdev.Australasia.DataPublisher.Common
                 Id = catalog.TRANSDEV_ID,
                 ClientId = catalog.CLIENT_ID,
                 ClientName = catalog.CLIENT_NAME,
-                ClientStatus = catalog.CLIENT_STATUS,
+                ClientStatus = (catalog.CLIENT_STATUS.HasValue ? (catalog.CLIENT_STATUS.Value ? "Active" : "In-active") : "In-active"),
                 ClientToken = catalog.CLIENT_TOKEN
             };
 
             return dtoCatalog;
+        }
+        public static VF_API_CATALOG_CLIENTS GetCatalogClient(this CatagoryClient catalogdto)
+        {
+            return new VF_API_CATALOG_CLIENTS
+            {
+                CLIENT_NAME= catalogdto.ClientName,
+                CLIENT_ID= catalogdto.ClientId,
+                CLIENT_STATUS= catalogdto.ClientStatus.ToLower().Equals("active")? true :false,
+                CLIENT_TOKEN= catalogdto.ClientToken,
+                TRANSDEV_ID= catalogdto.Id
+            };
         }
     }
 }
