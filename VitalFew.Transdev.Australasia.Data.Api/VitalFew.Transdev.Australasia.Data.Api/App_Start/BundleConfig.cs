@@ -9,7 +9,8 @@ namespace VitalFew.Transdev.Australasia.Data.Api
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-{version}.js",
+                        "~/Scripts/metro.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -23,9 +24,10 @@ namespace VitalFew.Transdev.Australasia.Data.Api
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+           bundles.Add(new StyleBundle("~/Content/css").Include(
+                  //"~/Content/bootstrap.css",
+                  "~/Content/site.css",
+                  "~/Content/metro-bootstrap.css"));
         }
     }
 }
