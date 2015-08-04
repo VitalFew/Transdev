@@ -66,5 +66,6 @@
   <ItemGroup>
     <Build Include="dbo\Tables\VF_API_CLIENT_OBJECTS.sql" />
     <Build Include="dbo\Tables\VF_API_CATALOG_CLIENTS.sql" />
+    <Build Include="dbo\Tables\VF_DATA_PROVIDER.sql" />
   </ItemGroup>
 </Project>
