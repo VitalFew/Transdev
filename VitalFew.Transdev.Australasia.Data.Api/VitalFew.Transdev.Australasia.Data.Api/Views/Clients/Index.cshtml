@@ -1,8 +1,47 @@
 ﻿
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Clients/_ClientLayout.cshtml";
+}
+
+@section head{
+    <script language="javascript" type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('#myDataTable').dataTable({ "bProcessing": true,
+            "bServerSide": true,
+            "sAjaxSource": 'Clients/AjaxDataProvider',
+            "aoColumns": [
+                                    { "sName": "Id",
+                                        "bSearchable": false,
+                                        "bSortable": false,
+                                        "bVisible": false
+
+                                    },
+			                        { "sName": "ClientName" },
+			                        { "sName": "ClientStatus" }
+		                        ]
+
+        }).makeEditable();
+    });
+
+    </script>
 }
 
 <h2>Index</h2>
 
+<body>
+    <div style="max-width:750px;margin-top:15px">
+        <table id="myDataTable" class="display">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Client Name</th>
+                    <th>Client Status</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</body>
