@@ -42,7 +42,6 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Controllers
                 filteredClients = _clientProvider.GetAll().Where(c => isNameSearchable && c.CLIENT_NAME.ToLower().Contains(param.sSearch.ToLower())
                                  ||
                                  isStatusSearchable && c.CLIENT_STATUS == (status == "Active" ? true : false));
-
             }
             else
             {
@@ -57,8 +56,6 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Controllers
                 filteredClients = filteredClients.OrderBy(orderingFunction);
             else
                 filteredClients = filteredClients.OrderByDescending(orderingFunction);
-
-            var displayedCompanieClients = filteredClients.Skip(param.iDisplayStart).Take(param.iDisplayLength);
 
             var displayedClients = filteredClients.Skip(param.iDisplayStart).Take(param.iDisplayLength);
             var result = from c in displayedClients select new[] { Convert.ToString(c.CLIENT_ID), c.CLIENT_NAME, ((c.CLIENT_STATUS.HasValue && c.CLIENT_STATUS.Value) ? "Active" : "In-Active") };
