@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using VitalFew.Transdev.Australasia.Data.Api.Models;
 
-namespace VitalFew.Transdev.Australasia.Data.Api.Provider.Contract
+namespace VitalFew.Transdev.Australasia.Data.Api.Providers.Contract
 {
     public interface IClientProvider
     {

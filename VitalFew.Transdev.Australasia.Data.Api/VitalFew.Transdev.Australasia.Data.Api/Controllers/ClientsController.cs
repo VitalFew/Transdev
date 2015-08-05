@@ -6,12 +6,20 @@ using System.Text;
 using System.Web.Mvc;
 using VitalFew.Transdev.Australasia.Data.Api.Models;
 using VitalFew.Transdev.Australasia.Data.Api.Models.Dto;
-using VitalFew.Transdev.Australasia.Data.Api.Provider;
+using VitalFew.Transdev.Australasia.Data.Api.Providers;
+using VitalFew.Transdev.Australasia.Data.Api.Providers.Contract;
 
 namespace VitalFew.Transdev.Australasia.Data.Api.Controllers
 {
     public class ClientsController : Controller
     {
+        IClientProvider _clientProvider;
+
+        public ClientsController(IClientProvider clientProvider)
+        {
+            _clientProvider = clientProvider;
+        }
+        
         // GET: Clients
         public ActionResult Index()
         {
@@ -33,13 +41,13 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Controllers
                 var isStatusSearchable = Convert.ToBoolean(Request["bSearchable_2"]);
 
                 //TODO:should inject provider
-                filteredClients = new ClientProvider().GetAll().Where(c => isNameSearchable && c.CLIENT_NAME.ToLower().Contains(param.sSearch.ToLower())
+                filteredClients = _clientProvider.GetAll().Where(c => isNameSearchable && c.CLIENT_NAME.ToLower().Contains(param.sSearch.ToLower())
                                  ||
                                  isStatusSearchable && c.CLIENT_STATUS == (status == "Active" ? true : false));
             }
             else
             {
-                filteredClients = new ClientProvider().GetAll();
+                filteredClients = _clientProvider.GetAll();
             }
             var isNameSortable = Convert.ToBoolean(Request["bSortable_1"]);
             var sortColumnIndex = Convert.ToInt32(Request["iSortCol_0"]);
