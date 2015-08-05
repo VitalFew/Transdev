@@ -2,9 +2,9 @@
 using System.Linq;
 using System.Threading.Tasks;
 using VitalFew.Transdev.Australasia.Data.Api.Models;
-using VitalFew.Transdev.Australasia.Data.Api.Provider.Contract;
+using VitalFew.Transdev.Australasia.Data.Api.Providers.Contract;
 
-namespace VitalFew.Transdev.Australasia.Data.Api.Provider
+namespace VitalFew.Transdev.Australasia.Data.Api.Providers
 {
     public class ClientProvider : IClientProvider
     {  /// <summary>
