@@ -1,37 +1,32 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Clients/_ClientLayout.cshtml";
+    ViewBag.Title = "Manage Clients";
 }
 
-@section head{
-    <script language="javascript" type="text/javascript">
-
-    $(document).ready(function () {
-
-        $('#myDataTable').dataTable({ "bProcessing": true,
-            "bServerSide": true,
-            "sAjaxSource": 'Clients/AjaxDataProvider',
-            "aoColumns": [
-                                    { "sName": "Id",
-                                        "bSearchable": false,
-                                        "bSortable": false,
-                                        "bVisible": false
-
-                                    },
-			                        { "sName": "ClientName" },
-			                        { "sName": "ClientStatus" }
-		                        ]
-
-        }).makeEditable();
-    });
-
-    </script>
-}
-
-<h2>Index</h2>
+<h2>Manage Clients</h2>
 
 <body>
+
+    <script language="javascript">
+        $(document).ready(function () {
+
+            $('#myDataTable').dataTable({ "bProcessing": true,
+                "bServerSide": true,
+                "sAjaxSource": 'Clients/AjaxDataProvider',
+                "aoColumns": [
+                                        { "sName": "Id",
+                                            "bSearchable": false,
+                                            "bSortable": false,
+                                            "bVisible": false
+
+                                        },
+			                            { "sName": "ClientName" },
+			                            { "sName": "ClientStatus" }
+		                            ]
+            }).makeEditable();
+        });
+    </script>
+
     <div style="max-width:750px;margin-top:15px">
         <table id="myDataTable" class="display">
             <thead>
