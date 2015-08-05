@@ -1,24 +1,21 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewBag.Title - My ASP.NET Application</title>
 
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")")
+
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")">
-    <link rel="shortcut icon" type="image/ico" href="http://www.datatables.net/favicon.ico">
-    <meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">
+    @Scripts.Render("~/bundles/modernizr")
+
     <link href="~/Content/DataTables/css/jquery.dataTables.css" rel="stylesheet" />
-    <link href="~/Content/DataTables/css/shCore.css" rel="stylesheet" />
-    <link href="~/Content/DataTables/css/demo.css" rel="stylesheet" />
-    <style type="text/css" class="init">
-        div.dataTables_wrapper {
-            margin-bottom: 3em;
-        }
-    </style>
-    <link href="images/font-awesome.css" rel="stylesheet">
+    <script src="~/Scripts/DataTables/jquery.dataTables.js"></script>
 </head>
+
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -47,9 +44,7 @@
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
-     
-@Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")")
+
     @RenderSection("scripts", required: false)
 </body>
 </html>
