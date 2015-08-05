@@ -10,23 +10,34 @@
     <script language="javascript">
         $(document).ready(function () {
 
-            $('#myDataTable').dataTable({ "bProcessing": true,
+            $('#myDataTable').dataTable({
+                "bProcessing": true,
                 "bServerSide": true,
-                "sAjaxSource": 'Clients/AjaxDataProvider',
+                "sAjaxSource": '@Url.Action("AjaxDataProvider", "Clients")',
                 "aoColumns": [
-                                        { "sName": "Id",
+                                        {
+                                            "sName": "Id",
                                             "bSearchable": false,
                                             "bSortable": false,
                                             "bVisible": false
 
                                         },
 			                            { "sName": "ClientName" },
-			                            { "sName": "ClientStatus" }
-		                            ]
-            }).makeEditable();
+			                            { "sName": "ClientStatus" },
+                                        {
+                                            "mRender": function (data, type, full) {
+                                                return '<a href=@Url.Action("Edit", "Clients")?guid=' + full[0] + '>Edit</a>';
+                                            }
+                                        }
+                ]
+            }); br
         });
     </script>
 
+
+    <div>
+        @Html.ActionLink("Add Client", "Add","Clients")
+    </div>
     <div style="max-width:750px;margin-top:15px">
         <table id="myDataTable" class="display">
             <thead>
