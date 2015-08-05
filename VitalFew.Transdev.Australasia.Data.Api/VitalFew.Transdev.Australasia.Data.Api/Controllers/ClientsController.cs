@@ -57,8 +57,8 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Controllers
             return Json(new
             {
                 sEcho = param.sEcho,
-                iTotalRecords = 100,
-                iTotalDisplayRecords = 2,
+                iTotalRecords = filteredClients.Count(),
+                iTotalDisplayRecords = displayedClients.Count(),
                 aaData = result
             }, JsonRequestBehavior.AllowGet);
         }
