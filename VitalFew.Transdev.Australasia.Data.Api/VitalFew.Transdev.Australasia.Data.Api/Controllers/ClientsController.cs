@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
 using System.Web.Mvc;
 using VitalFew.Transdev.Australasia.Data.Api.Models;
 using VitalFew.Transdev.Australasia.Data.Api.Models.Dto;
@@ -13,7 +11,7 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Controllers
 {
     public class ClientsController : Controller
     {
-        IClientProvider _clientProvider;
+        private readonly IClientProvider _clientProvider;
 
         public ClientsController(IClientProvider clientProvider)
         {
@@ -73,14 +71,14 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Controllers
         [HttpGet]
         public ActionResult Edit(Guid guid)
         {
-            var client = new ClientProvider().GetAll().Where(x => x.CLIENT_ID.HasValue && x.CLIENT_ID.Value.Equals(guid)).FirstOrDefault();
+            var client = _clientProvider.GetAll().Where(x => x.CLIENT_ID.HasValue && x.CLIENT_ID.Value.Equals(guid)).FirstOrDefault();
 
             return View(client);
         }
 
         public async System.Threading.Tasks.Task<ActionResult> Edit(VF_API_CATALOG_CLIENTS client)
         {
-            await new ClientProvider().Save(client);
+            await _clientProvider.Save(client);
 
             return RedirectToAction("Index");
         }
@@ -95,7 +93,7 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Controllers
         {
             //TODO: Should Generate from SQL
             client.CLIENT_ID = Guid.NewGuid();
-            await new ClientProvider().Save(client);
+            await _clientProvider.Save(client);
 
             return RedirectToAction("Index");
         }
