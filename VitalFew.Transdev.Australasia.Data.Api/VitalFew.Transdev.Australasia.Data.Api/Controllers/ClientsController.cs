@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 using VitalFew.Transdev.Australasia.Data.Api.Models;
@@ -17,7 +18,7 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Controllers
         {
             _clientProvider = clientProvider;
         }
-        
+
         // GET: Clients
         public ActionResult Index()
         {
@@ -85,7 +86,7 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Controllers
         [HttpGet]
         public ActionResult Add()
         {
-            return View(new VF_API_CATALOG_CLIENTS { CLIENT_TOKEN= GenerateId()});
+            return View(new VF_API_CATALOG_CLIENTS { CLIENT_TOKEN = GenerateId() });
         }
 
         [HttpPost]
@@ -110,11 +111,11 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Controllers
             {
                 i *= ((int)b + 1);
             }
-            var key= string.Format("{0:x}", i - DateTime.Now.Ticks);
+            var key = string.Format("{0:x}", i - DateTime.Now.Ticks);
             var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             var random = new Random();
             var result = new string(
-                Enumerable.Repeat(chars, 20-key.Length)
+                Enumerable.Repeat(chars, 20 - key.Length)
                           .Select(s => s[random.Next(s.Length)])
                           .ToArray());
 
