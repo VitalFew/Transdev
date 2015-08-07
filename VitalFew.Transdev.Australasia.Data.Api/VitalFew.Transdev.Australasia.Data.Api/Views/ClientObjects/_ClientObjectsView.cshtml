@@ -1,8 +1,12 @@
 ﻿@model IEnumerable<VitalFew.Transdev.Australasia.Data.Api.Models.VF_API_CLIENT_OBJECTS>
 
+<br />
+
+
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <a href="@Url.Action("Add","Clients")" class="btn btn-success">Create a New Endpoint</a>
 </p>
+
 <table class="table">
     <tr>
         <th>
@@ -75,5 +79,4 @@
         </td>
     </tr>
 }
-
 </table>

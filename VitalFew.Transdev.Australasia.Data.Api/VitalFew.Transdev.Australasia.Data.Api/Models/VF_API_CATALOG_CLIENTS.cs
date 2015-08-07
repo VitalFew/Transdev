@@ -21,10 +21,10 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Models
         }
     
         public int TRANSDEV_ID { get; set; }
-        public Nullable<System.Guid> CLIENT_ID { get; set; }
+        public System.Guid CLIENT_ID { get; set; }
         public string CLIENT_NAME { get; set; }
         public string CLIENT_TOKEN { get; set; }
-        public Nullable<bool> CLIENT_STATUS { get; set; }
+        public bool CLIENT_STATUS { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VF_API_CLIENT_OBJECTS> VF_API_CLIENT_OBJECTS { get; set; }
