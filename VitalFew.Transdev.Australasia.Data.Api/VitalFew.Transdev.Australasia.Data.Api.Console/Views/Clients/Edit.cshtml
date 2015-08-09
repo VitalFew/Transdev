@@ -1,0 +1,83 @@
+﻿@model  VitalFew.Transdev.Australasia.Data.Core.Database.VF_API_CATALOG_CLIENTS
+
+@{
+    ViewBag.Title = "Edit Client";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts
+{
+    <script language="javascript">
+        $(function () {
+            $('#btToken').click(function (e) {
+
+                $.ajax({
+                    url: "@Url.Action("GetToken","Clients")",
+                    type: "GET",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                error: function (response) {
+                    alert(response.responseText);
+                },
+                success: function (response) {
+                    $('#tokenInput').val(response);
+                }
+            });
+
+        });
+        });
+
+     </script>
+}
+
+<h2>Edit Client</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.TRANSDEV_ID)
+        @Html.HiddenFor(model => model.CLIENT_ID)
+
+        <div class="form-group">
+            @Html.Label("Client Name", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CLIENT_NAME, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CLIENT_NAME, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Client Token", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.CLIENT_TOKEN, new { htmlAttributes = new { @readonly = "readonly", @class = "form-control", @Id="tokenInput" } })
+                @Html.ValidationMessageFor(model => model.CLIENT_TOKEN, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-1">
+                <input type="button" value="Generate a New Token" class="btn btn-default" id="btToken" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Active", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <label class="control radio">
+                    @Html.EditorFor(model => model.CLIENT_STATUS)
+                    @Html.ValidationMessageFor(model => model.CLIENT_STATUS, "", new { @class = "text-danger" })
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+
+    @Html.Action("Get", "ClientObjects", new { @clientId= Model.TRANSDEV_ID })
+}

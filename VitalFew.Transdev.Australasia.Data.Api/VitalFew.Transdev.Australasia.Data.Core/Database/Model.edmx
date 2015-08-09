@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="VF_API_CATALOG_CLIENTS">
+          <Key>
+            <PropertyRef Name="TRANSDEV_ID" />
+          </Key>
+          <Property Name="TRANSDEV_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CLIENT_ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CLIENT_NAME" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="CLIENT_TOKEN" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="CLIENT_STATUS" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VF_API_CLIENT_OBJECTS">
+          <Key>
+            <PropertyRef Name="TRANSDEV_ID" />
+            <PropertyRef Name="TRANSDEV_PARAM" />
+          </Key>
+          <Property Name="TRANSDEV_ID" Type="int" Nullable="false" />
+          <Property Name="TRANSDEV_PARAM" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DATA_PROVIDER_ID" Type="int" Nullable="false" />
+          <Property Name="DB_SERVER_NAME" Type="varchar" MaxLength="250" />
+          <Property Name="DB_INSTANCE_NAME" Type="varchar" MaxLength="250" />
+          <Property Name="DB_SERVER_PORT" Type="varchar" MaxLength="50" />
+          <Property Name="DB_NAME" Type="varchar" MaxLength="250" />
+          <Property Name="DB_USER" Type="varchar" MaxLength="250" />
+          <Property Name="DB_USER_PASSWORD" Type="varchar" MaxLength="250" />
+          <Property Name="DB_AUTHENTICATION_TYPE" Type="varchar" MaxLength="250" />
+          <Property Name="DB_INTEGRATED_SECURITY" Type="bit" />
+          <Property Name="OBJECT_ID" Type="int" Nullable="false" />
+          <Property Name="DB_SCHEMA" Type="varchar" MaxLength="250" />
+          <Property Name="DB_OBJECT_TYPE" Type="varchar" MaxLength="250" />
+          <Property Name="DB_OBJECT_NAME" Type="varchar" MaxLength="250" />
+          <Property Name="DB_OBJECT_CREATED_DATE" Type="datetime" />
+          <Property Name="DB_OBJECT_MODIFIED_DATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="VF_DATA_PROVIDER">
+          <Key>
+            <PropertyRef Name="DATA_PROVIDER_ID" />
+          </Key>
+          <Property Name="DATA_PROVIDER_ID" Type="int" Nullable="false" />
+          <Property Name="DATA_PROVIDER_Name" Type="varchar" MaxLength="350" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_VF_API_CLIENT_OBJECTS_VF_API_CATALOG_CLIENTS">
+          <End Role="VF_API_CATALOG_CLIENTS" Type="Self.VF_API_CATALOG_CLIENTS" Multiplicity="1" />
+          <End Role="VF_API_CLIENT_OBJECTS" Type="Self.VF_API_CLIENT_OBJECTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VF_API_CATALOG_CLIENTS">
+              <PropertyRef Name="TRANSDEV_ID" />
+            </Principal>
+            <Dependent Role="VF_API_CLIENT_OBJECTS">
+              <PropertyRef Name="TRANSDEV_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DataModelStoreContainer">
+          <EntitySet Name="VF_API_CATALOG_CLIENTS" EntityType="Self.VF_API_CATALOG_CLIENTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VF_API_CLIENT_OBJECTS" EntityType="Self.VF_API_CLIENT_OBJECTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VF_DATA_PROVIDER" EntityType="Self.VF_DATA_PROVIDER" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_VF_API_CLIENT_OBJECTS_VF_API_CATALOG_CLIENTS" Association="Self.FK_VF_API_CLIENT_OBJECTS_VF_API_CATALOG_CLIENTS">
+            <End Role="VF_API_CATALOG_CLIENTS" EntitySet="VF_API_CATALOG_CLIENTS" />
+            <End Role="VF_API_CLIENT_OBJECTS" EntitySet="VF_API_CLIENT_OBJECTS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="VF_API_CATALOG_CLIENTS">
+          <Key>
+            <PropertyRef Name="TRANSDEV_ID" />
+          </Key>
+          <Property Name="TRANSDEV_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CLIENT_ID" Type="Guid" Nullable="false" />
+          <Property Name="CLIENT_NAME" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CLIENT_TOKEN" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CLIENT_STATUS" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="VF_API_CLIENT_OBJECTS" Relationship="Self.FK_VF_API_CLIENT_OBJECTS_VF_API_CATALOG_CLIENTS" FromRole="VF_API_CATALOG_CLIENTS" ToRole="VF_API_CLIENT_OBJECTS" />
+        </EntityType>
+        <EntityType Name="VF_API_CLIENT_OBJECTS">
+          <Key>
+            <PropertyRef Name="TRANSDEV_ID" />
+            <PropertyRef Name="TRANSDEV_PARAM" />
+          </Key>
+          <Property Name="TRANSDEV_ID" Type="Int32" Nullable="false" />
+          <Property Name="TRANSDEV_PARAM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DATA_PROVIDER_ID" Type="Int32" Nullable="false" />
+          <Property Name="DB_SERVER_NAME" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="DB_INSTANCE_NAME" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="DB_SERVER_PORT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DB_NAME" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="DB_USER" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="DB_USER_PASSWORD" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="DB_AUTHENTICATION_TYPE" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="DB_INTEGRATED_SECURITY" Type="Boolean" />
+          <Property Name="OBJECT_ID" Type="Int32" Nullable="false" />
+          <Property Name="DB_SCHEMA" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="DB_OBJECT_TYPE" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="DB_OBJECT_NAME" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="DB_OBJECT_CREATED_DATE" Type="DateTime" Precision="3" />
+          <Property Name="DB_OBJECT_MODIFIED_DATE" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="VF_API_CATALOG_CLIENTS" Relationship="Self.FK_VF_API_CLIENT_OBJECTS_VF_API_CATALOG_CLIENTS" FromRole="VF_API_CLIENT_OBJECTS" ToRole="VF_API_CATALOG_CLIENTS" />
+        </EntityType>
+        <EntityType Name="VF_DATA_PROVIDER">
+          <Key>
+            <PropertyRef Name="DATA_PROVIDER_ID" />
+          </Key>
+          <Property Name="DATA_PROVIDER_ID" Type="Int32" Nullable="false" />
+          <Property Name="DATA_PROVIDER_Name" Type="String" MaxLength="350" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_VF_API_CLIENT_OBJECTS_VF_API_CATALOG_CLIENTS">
+          <End Role="VF_API_CATALOG_CLIENTS" Type="Self.VF_API_CATALOG_CLIENTS" Multiplicity="1" />
+          <End Role="VF_API_CLIENT_OBJECTS" Type="Self.VF_API_CLIENT_OBJECTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VF_API_CATALOG_CLIENTS">
+              <PropertyRef Name="TRANSDEV_ID" />
+            </Principal>
+            <Dependent Role="VF_API_CLIENT_OBJECTS">
+              <PropertyRef Name="TRANSDEV_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="VF_API_CATALOG_CLIENTS" EntityType="Self.VF_API_CATALOG_CLIENTS" />
+          <EntitySet Name="VF_API_CLIENT_OBJECTS" EntityType="Self.VF_API_CLIENT_OBJECTS" />
+          <EntitySet Name="VF_DATA_PROVIDER" EntityType="Self.VF_DATA_PROVIDER" />
+          <AssociationSet Name="FK_VF_API_CLIENT_OBJECTS_VF_API_CATALOG_CLIENTS" Association="Self.FK_VF_API_CLIENT_OBJECTS_VF_API_CATALOG_CLIENTS">
+            <End Role="VF_API_CATALOG_CLIENTS" EntitySet="VF_API_CATALOG_CLIENTS" />
+            <End Role="VF_API_CLIENT_OBJECTS" EntitySet="VF_API_CLIENT_OBJECTS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DataModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="VF_API_CATALOG_CLIENTS">
+            <EntityTypeMapping TypeName="DataModel.VF_API_CATALOG_CLIENTS">
+              <MappingFragment StoreEntitySet="VF_API_CATALOG_CLIENTS">
+                <ScalarProperty Name="TRANSDEV_ID" ColumnName="TRANSDEV_ID" />
+                <ScalarProperty Name="CLIENT_ID" ColumnName="CLIENT_ID" />
+                <ScalarProperty Name="CLIENT_NAME" ColumnName="CLIENT_NAME" />
+                <ScalarProperty Name="CLIENT_TOKEN" ColumnName="CLIENT_TOKEN" />
+                <ScalarProperty Name="CLIENT_STATUS" ColumnName="CLIENT_STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VF_API_CLIENT_OBJECTS">
+            <EntityTypeMapping TypeName="DataModel.VF_API_CLIENT_OBJECTS">
+              <MappingFragment StoreEntitySet="VF_API_CLIENT_OBJECTS">
+                <ScalarProperty Name="TRANSDEV_ID" ColumnName="TRANSDEV_ID" />
+                <ScalarProperty Name="TRANSDEV_PARAM" ColumnName="TRANSDEV_PARAM" />
+                <ScalarProperty Name="DATA_PROVIDER_ID" ColumnName="DATA_PROVIDER_ID" />
+                <ScalarProperty Name="DB_SERVER_NAME" ColumnName="DB_SERVER_NAME" />
+                <ScalarProperty Name="DB_INSTANCE_NAME" ColumnName="DB_INSTANCE_NAME" />
+                <ScalarProperty Name="DB_SERVER_PORT" ColumnName="DB_SERVER_PORT" />
+                <ScalarProperty Name="DB_NAME" ColumnName="DB_NAME" />
+                <ScalarProperty Name="DB_USER" ColumnName="DB_USER" />
+                <ScalarProperty Name="DB_USER_PASSWORD" ColumnName="DB_USER_PASSWORD" />
+                <ScalarProperty Name="DB_AUTHENTICATION_TYPE" ColumnName="DB_AUTHENTICATION_TYPE" />
+                <ScalarProperty Name="DB_INTEGRATED_SECURITY" ColumnName="DB_INTEGRATED_SECURITY" />
+                <ScalarProperty Name="OBJECT_ID" ColumnName="OBJECT_ID" />
+                <ScalarProperty Name="DB_SCHEMA" ColumnName="DB_SCHEMA" />
+                <ScalarProperty Name="DB_OBJECT_TYPE" ColumnName="DB_OBJECT_TYPE" />
+                <ScalarProperty Name="DB_OBJECT_NAME" ColumnName="DB_OBJECT_NAME" />
+                <ScalarProperty Name="DB_OBJECT_CREATED_DATE" ColumnName="DB_OBJECT_CREATED_DATE" />
+                <ScalarProperty Name="DB_OBJECT_MODIFIED_DATE" ColumnName="DB_OBJECT_MODIFIED_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VF_DATA_PROVIDER">
+            <EntityTypeMapping TypeName="DataModel.VF_DATA_PROVIDER">
+              <MappingFragment StoreEntitySet="VF_DATA_PROVIDER">
+                <ScalarProperty Name="DATA_PROVIDER_ID" ColumnName="DATA_PROVIDER_ID" />
+                <ScalarProperty Name="DATA_PROVIDER_Name" ColumnName="DATA_PROVIDER_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

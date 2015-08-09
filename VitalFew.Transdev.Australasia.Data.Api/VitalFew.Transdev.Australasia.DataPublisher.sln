@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VitalFew.Transdev.Australas
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "VitalFew.Transdev.Australasia.DataBase", "VitalFew.Transdev.Australasia.DataBase\VitalFew.Transdev.Australasia.DataBase.sqlproj", "{3C3458FE-7F90-4435-B3E5-1A2C7C446849}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VitalFew.Transdev.Australasia.Data.Api", "VitalFew.Transdev.Australasia.Data.Api\VitalFew.Transdev.Australasia.Data.Api.csproj", "{CDD0AC92-8F6E-4451-951A-9A508A8D3E48}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VitalFew.Transdev.Australasia.Data.Api.Console", "VitalFew.Transdev.Australasia.Data.Api.Console\VitalFew.Transdev.Australasia.Data.Api.Console.csproj", "{CDD0AC92-8F6E-4451-951A-9A508A8D3E48}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
