@@ -9,9 +9,7 @@
 
 namespace VitalFew.Transdev.Australasia.Data.Core.Database
 {
-    using System;
-    using System.Collections.Generic;
-    
+
     public partial class VF_DATA_PROVIDER
     {
         public int DATA_PROVIDER_ID { get; set; }

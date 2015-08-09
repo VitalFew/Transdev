@@ -1,12 +1,8 @@
-﻿@model IEnumerable <VitalFew.Transdev.Australasia.Data.Core.Database.VF_API_CLIENT_OBJECTS>
-
-<br />
-
+﻿@model IEnumerable<VitalFew.Transdev.Australasia.Data.Core.Database.VF_API_CLIENT_OBJECTS>
 
 <p>
-    <a href="@Url.Action("Add","Clients")" class="btn btn-success">Create a New Endpoint</a>
+    @Html.ActionLink("Create New","Add","ClientObjects", new { guid= TempData["guid"], clientId = TempData["clientId"] }, new { id="addNew" })
 </p>
-
 <table class="table">
     <tr>
         <th>
@@ -75,8 +71,9 @@
             @Html.DisplayFor(modelItem => item.DB_OBJECT_NAME)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Edit", "Edit", new { transDevId = item.TRANSDEV_ID, transDevParam= item.TRANSDEV_PARAM })
         </td>
     </tr>
 }
+
 </table>

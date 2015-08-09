@@ -6,28 +6,25 @@ using VitalFew.Transdev.Australasia.Data.Core.Database;
 
 namespace VitalFew.Transdev.Australasia.Data.Api.Providers
 {
-    public class ClientProvider : IClientProvider
-    {  /// <summary>
-       /// Gets all.
-       /// </summary>
-       /// <returns></returns>
-        public IQueryable<VF_API_CATALOG_CLIENTS> GetAll()
+    public class ClientObjectProvider : IClientObjectProvider
+    {
+        public IQueryable<VF_API_CLIENT_OBJECTS> GetAll()
         {
             var context = new Entities();
-            return context.VF_API_CATALOG_CLIENTS.AsQueryable();
+            return context.VF_API_CLIENT_OBJECTS.AsQueryable();
         }
 
-        public async Task<int> Save(VF_API_CATALOG_CLIENTS client)
+        public async Task<int> Save(VF_API_CLIENT_OBJECTS clientObject)
         {
             using (var context = new Entities())
             {
-                if (client.TRANSDEV_ID == 0)
+                if (clientObject.DB_OBJECT_CREATED_DATE.Equals(clientObject.DB_OBJECT_MODIFIED_DATE))
                 {
-                    context.Entry(client).State = EntityState.Added;
+                    context.Entry(clientObject).State = EntityState.Added;
                 }
                 else
                 {
-                    context.Entry(client).State = EntityState.Modified;
+                    context.Entry(clientObject).State = EntityState.Modified;
                 }
 
                 return await context.SaveChangesAsync();

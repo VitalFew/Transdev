@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Security.Claims;
-using System.Web;
 using VitalFew.Transdev.Australasia.DataPublisher.Providers;
 
 namespace VitalFew.Transdev.Australasia.DataPublisher.Infrastructure.Headers

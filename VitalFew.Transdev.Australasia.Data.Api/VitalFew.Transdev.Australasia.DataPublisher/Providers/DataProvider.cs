@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
+﻿using System.Data;
 using System.Threading.Tasks;
-using System.Web;
 using VitalFew.Transdev.Australasia.Data.Core.Adaptors;
 using VitalFew.Transdev.Australasia.Data.Core.Parameters;
-using VitalFew.Transdev.Australasia.Data.Core.Parameters.Interfaces;
 using VitalFew.Transdev.Australasia.Data.Core.Result;
 using VitalFew.Transdev.Australasia.DataPublisher.Models.Database;
 using VitalFew.Transdev.Australasia.DataPublisher.Providers.Contract;

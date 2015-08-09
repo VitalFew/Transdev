@@ -10,8 +10,7 @@
 namespace VitalFew.Transdev.Australasia.Data.Core.Database
 {
     using System;
-    using System.Collections.Generic;
-    
+
     public partial class VF_API_CLIENT_OBJECTS
     {
         public int TRANSDEV_ID { get; set; }

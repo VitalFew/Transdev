@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Web.Mvc;
 using Microsoft.Practices.Unity.Mvc;
+using VitalFew.Transdev.Australasia.Data.Api.App_Start;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(VitalFew.Transdev.Australasia.Data.Api.Console.App_Start.UnityWebActivator), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethod(typeof(VitalFew.Transdev.Australasia.Data.Api.Console.App_Start.UnityWebActivator), "Shutdown")]

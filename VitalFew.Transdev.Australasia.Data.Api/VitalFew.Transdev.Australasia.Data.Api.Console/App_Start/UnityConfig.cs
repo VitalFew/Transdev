@@ -1,10 +1,9 @@
 using System;
 using Microsoft.Practices.Unity;
-using Microsoft.Practices.Unity.Configuration;
-using VitalFew.Transdev.Australasia.Data.Api.Console.Providers.Contract;
-using VitalFew.Transdev.Australasia.Data.Api.Console.Providers;
+using VitalFew.Transdev.Australasia.Data.Api.Providers.Contract;
+using VitalFew.Transdev.Australasia.Data.Api.Providers;
 
-namespace VitalFew.Transdev.Australasia.Data.Api.Console.App_Start
+namespace VitalFew.Transdev.Australasia.Data.Api.App_Start
 {
     /// <summary>
     /// Specifies the Unity configuration for the main container.
@@ -39,7 +38,8 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Console.App_Start
 
             // TODO: Register your types here
             container.RegisterType<IClientProvider, ClientProvider>();
-            container.RegisterType<ICatalogClientProvider, CatalogClientProvider>();
+            container.RegisterType<IClientObjectProvider, ClientObjectProvider>();
+            container.RegisterType<IClientDataProvider, ClientDataProvider>();
         }
     }
 }

@@ -1,12 +1,5 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System;
 using System.Web.Http;
-using System.Web.Mvc;
 using VitalFew.Transdev.Australasia.DataPublisher.Providers.Contract;
 
 namespace VitalFew.Transdev.Australasia.DataPublisher.Controllers

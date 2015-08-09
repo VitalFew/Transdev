@@ -1,17 +1,9 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
+﻿using System;
 using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Http;
-using System.Web.Http.Results;
 using VitalFew.Transdev.Australasia.Data.Core.Exceptions;
 using VitalFew.Transdev.Australasia.DataPublisher.Models;
-using VitalFew.Transdev.Australasia.DataPublisher.Providers;
 using VitalFew.Transdev.Australasia.DataPublisher.Providers.Contract;
 
 namespace VitalFew.Transdev.Australasia.DataPublisher.Controllers

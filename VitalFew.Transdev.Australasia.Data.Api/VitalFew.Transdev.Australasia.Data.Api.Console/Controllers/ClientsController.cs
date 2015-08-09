@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 using VitalFew.Transdev.Australasia.Data.Api.Console.Models.Dto;
-using VitalFew.Transdev.Australasia.Data.Api.Console.Providers.Contract;
+using VitalFew.Transdev.Australasia.Data.Api.Providers.Contract;
 using VitalFew.Transdev.Australasia.Data.Core.Database;
 
 namespace VitalFew.Transdev.Australasia.Data.Api.Console.Controllers

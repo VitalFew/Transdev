@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 using VitalFew.Transdev.Australasia.DataPublisher.Navigation.Contract;
 
 namespace VitalFew.Transdev.Australasia.DataPublisher.Navigation
