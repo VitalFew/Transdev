@@ -9,10 +9,21 @@
 
 namespace VitalFew.Transdev.Australasia.Data.Core.Database
 {
-
+    using System;
+    using System.Collections.Generic;
+    
     public partial class VF_DATA_PROVIDER
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public VF_DATA_PROVIDER()
+        {
+            this.VF_API_CLIENT_OBJECTS = new HashSet<VF_API_CLIENT_OBJECTS>();
+        }
+    
         public int DATA_PROVIDER_ID { get; set; }
         public string DATA_PROVIDER_Name { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<VF_API_CLIENT_OBJECTS> VF_API_CLIENT_OBJECTS { get; set; }
     }
 }

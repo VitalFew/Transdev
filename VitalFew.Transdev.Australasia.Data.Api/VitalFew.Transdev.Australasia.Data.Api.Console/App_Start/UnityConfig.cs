@@ -1,7 +1,7 @@
 using System;
 using Microsoft.Practices.Unity;
-using VitalFew.Transdev.Australasia.Data.Api.Providers.Contract;
-using VitalFew.Transdev.Australasia.Data.Api.Providers;
+using VitalFew.Transdev.Australasia.Data.Api.Console.Providers;
+using VitalFew.Transdev.Australasia.Data.Api.Console.Providers.Contract;
 
 namespace VitalFew.Transdev.Australasia.Data.Api.App_Start
 {
@@ -37,9 +37,9 @@ namespace VitalFew.Transdev.Australasia.Data.Api.App_Start
             // container.LoadConfiguration();
 
             // TODO: Register your types here
-            container.RegisterType<IClientProvider, ClientProvider>();
             container.RegisterType<IClientObjectProvider, ClientObjectProvider>();
-            container.RegisterType<IClientDataProvider, ClientDataProvider>();
+            container.RegisterType<ICatalogClientProvider, CatalogClientProvider>();
+            container.RegisterType<IDataProvider, DataProvider>();
         }
     }
 }

@@ -1,11 +1,11 @@
 ﻿@model VitalFew.Transdev.Australasia.Data.Core.Database.VF_API_CLIENT_OBJECTS
 
 @{
-    ViewBag.Title = "Add";
+    ViewBag.Title = "Add a New Endpoint";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Add</h2>
+<h2>Add a New Endpoint</h2>
 
 
 @using (Html.BeginForm()) 
@@ -13,8 +13,9 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>View Client Object</h4>
+        
         <hr />
+
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         <div class="form-group">
@@ -100,29 +101,13 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.OBJECT_ID, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.OBJECT_ID, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.OBJECT_ID, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
             @Html.LabelFor(model => model.DB_SCHEMA, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.DB_SCHEMA, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.DB_SCHEMA, "", new { @class = "text-danger" })
             </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DB_OBJECT_TYPE, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DB_OBJECT_TYPE, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DB_OBJECT_TYPE, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
+        
         <div class="form-group">
             @Html.LabelFor(model => model.DB_OBJECT_NAME, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -136,13 +121,8 @@
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
+
+        @Html.HiddenFor(model => model.TRANSDEV_ID)
+
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
 }

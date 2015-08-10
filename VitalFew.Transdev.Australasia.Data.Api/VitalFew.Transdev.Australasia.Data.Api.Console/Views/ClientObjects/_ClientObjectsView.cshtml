@@ -1,77 +1,46 @@
 ﻿@model IEnumerable<VitalFew.Transdev.Australasia.Data.Core.Database.VF_API_CLIENT_OBJECTS>
 
-<p>
-    @Html.ActionLink("Create New","Add","ClientObjects", new { guid= TempData["guid"], clientId = TempData["clientId"] }, new { id="addNew" })
-</p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayName("Provider")
+        </th>
+        <th>
+            @Html.DisplayName("Parameter Name")
+        </th>
         <th>
             @Html.DisplayName("Server Name")
         </th>
         <th>
-            @Html.DisplayName("Instance Name")
-        </th>
-        <th>
-            @Html.DisplayName("Server port")
-        </th>
-        <th>
-            @Html.DisplayName("Name")
-        </th>
-        <th>
-            @Html.DisplayName("User")
-        </th>
-        <th>
-            @Html.DisplayName("User Password")
-        </th>
-        <th>
-            @Html.DisplayName("Authentication Type")
-        </th>
-        <th>
-            @Html.DisplayName("Schema")
-        </th>
-        <th>
-            @Html.DisplayName("Object Type")
+            @Html.DisplayName("Database Name")
         </th>
         <th>
             @Html.DisplayName("Object Name")
         </th>
-        <th></th>
+        <th>
+            Action
+        </th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.VF_DATA_PROVIDER.DATA_PROVIDER_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TRANSDEV_PARAM)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.DB_SERVER_NAME)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DB_INSTANCE_NAME)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DB_SERVER_PORT)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DB_NAME)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DB_USER)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DB_USER_PASSWORD)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DB_AUTHENTICATION_TYPE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DB_SCHEMA)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DB_OBJECT_TYPE)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.DB_OBJECT_NAME)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { transDevId = item.TRANSDEV_ID, transDevParam= item.TRANSDEV_PARAM })
+            @Html.ActionLink("Edit", "Edit", new { id = item.CLIENT_OBJECT_ID })
         </td>
     </tr>
 }

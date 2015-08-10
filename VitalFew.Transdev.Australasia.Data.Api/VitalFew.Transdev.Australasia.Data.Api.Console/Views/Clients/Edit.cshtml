@@ -11,6 +11,8 @@
         $(function () {
             $('#btToken').click(function (e) {
 
+                alert('sda');
+
                 $.ajax({
                     url: "@Url.Action("GetToken","Clients")",
                     type: "GET",
@@ -57,19 +59,19 @@
                 @Html.ValidationMessageFor(model => model.CLIENT_TOKEN, "", new { @class = "text-danger" })
             </div>
             <div class="col-md-6">
-                <input type="button" value="Regenerate" class="btn btn-default" id="btToken" />
+                <input type="button" value="Regenerate a new Token" class="btn btn-default" id="btToken" />
             </div>
         </div>
 
         <div class="form-group">
             @Html.Label("Active", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <div class="checkbox">
+                <label class="control radio">
                     @Html.EditorFor(model => model.CLIENT_STATUS)
                     @Html.ValidationMessageFor(model => model.CLIENT_STATUS, "", new { @class = "text-danger" })
-                </div>
+                </label>
             </div>
-           </div>
+        </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -77,9 +79,10 @@
             </div>
         </div>
     </div>
-    @Html.Action("Get", "ClientObjects", new { @guid= Model.CLIENT_ID, @clientId= Model.TRANSDEV_ID })
-}
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+    <p>
+        <a href="@Url.Action("Add","ClientObjects" ,  new { id= Model.CLIENT_ID } )" class="btn btn-primary btn-sm">Create a New Endpoint</a>
+    </p>
+
+    @Html.Action("Get", "ClientObjects", new { @id= Model.CLIENT_ID })
+}

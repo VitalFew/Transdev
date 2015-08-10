@@ -3,20 +3,21 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using VitalFew.Transdev.Australasia.Data.Api.Console.Models.Dto;
-using VitalFew.Transdev.Australasia.Data.Api.Providers.Contract;
+using VitalFew.Transdev.Australasia.Data.Api.Console.Providers.Contract;
 using VitalFew.Transdev.Australasia.Data.Core.Database;
 
 namespace VitalFew.Transdev.Australasia.Data.Api.Console.Controllers
 {
     public class ClientsController : Controller
     {
-        private readonly IClientProvider _clientProvider;
+        private readonly ICatalogClientProvider _catalogClientProvider;
 
-        public ClientsController(IClientProvider clientProvider)
+        public ClientsController(ICatalogClientProvider catalogClientProvider)
         {
-            _clientProvider = clientProvider;
+            _catalogClientProvider = catalogClientProvider;
         }
 
         // GET: Clients
@@ -39,13 +40,13 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Console.Controllers
                 var isNameSearchable = Convert.ToBoolean(Request["bSearchable_1"]);
                 var isStatusSearchable = Convert.ToBoolean(Request["bSearchable_2"]);
 
-                filteredClients = _clientProvider.GetAll().Where(c => isNameSearchable && c.CLIENT_NAME.ToLower().Contains(param.sSearch.ToLower())
+                filteredClients = _catalogClientProvider.GetAll().Where(c => isNameSearchable && c.CLIENT_NAME.ToLower().Contains(param.sSearch.ToLower())
                                  ||
                                  isStatusSearchable && c.CLIENT_STATUS == (status == "Active" ? true : false));
             }
             else
             {
-                filteredClients = _clientProvider.GetAll();
+                filteredClients = _catalogClientProvider.GetAll();
             }
             var isNameSortable = Convert.ToBoolean(Request["bSortable_1"]);
             var sortColumnIndex = Convert.ToInt32(Request["iSortCol_0"]);
@@ -71,14 +72,14 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Console.Controllers
         [HttpGet]
         public ActionResult Edit(Guid id)
         {
-            var client = _clientProvider.GetAll().Where(x => x.CLIENT_ID.Equals(id)).FirstOrDefault();
+            var client = _catalogClientProvider.GetAll().Where(x => x.CLIENT_ID.Equals(id)).FirstOrDefault();
 
             return View(client);
         }
 
-        public async System.Threading.Tasks.Task<ActionResult> Edit(VF_API_CATALOG_CLIENTS client)
+        public async Task<ActionResult> Edit(VF_API_CATALOG_CLIENTS client)
         {
-            await _clientProvider.Save(client);
+            await _catalogClientProvider.Save(client);
 
             return RedirectToAction("Index");
         }
@@ -89,11 +90,11 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Console.Controllers
         }
 
         [HttpPost]
-        public async System.Threading.Tasks.Task<ActionResult> Add(VF_API_CATALOG_CLIENTS client)
+        public async Task<ActionResult> Add(VF_API_CATALOG_CLIENTS client)
         {
             //TODO: Should Generate from SQL
             client.CLIENT_ID = Guid.NewGuid();
-            await _clientProvider.Save(client);
+            await _catalogClientProvider.Save(client);
 
             return RedirectToAction("Index");
         }

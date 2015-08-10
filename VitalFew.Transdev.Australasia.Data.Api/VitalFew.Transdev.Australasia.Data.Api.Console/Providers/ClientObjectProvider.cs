@@ -1,10 +1,10 @@
 ﻿using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
-using VitalFew.Transdev.Australasia.Data.Api.Providers.Contract;
+using VitalFew.Transdev.Australasia.Data.Api.Console.Providers.Contract;
 using VitalFew.Transdev.Australasia.Data.Core.Database;
 
-namespace VitalFew.Transdev.Australasia.Data.Api.Providers
+namespace VitalFew.Transdev.Australasia.Data.Api.Console.Providers
 {
     public class ClientObjectProvider : IClientObjectProvider
     {
@@ -18,8 +18,9 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Providers
         {
             using (var context = new Entities())
             {
-                if (clientObject.DB_OBJECT_CREATED_DATE.Equals(clientObject.DB_OBJECT_MODIFIED_DATE))
+                if (clientObject.CLIENT_OBJECT_ID == System.Guid.Empty)
                 {
+                    clientObject.CLIENT_OBJECT_ID = System.Guid.NewGuid();
                     context.Entry(clientObject).State = EntityState.Added;
                 }
                 else

@@ -2,6 +2,13 @@
     ViewBag.Title = "Manage Clients";
 }
 
+<style media="all" type="text/css">
+    .alignCenter {
+        text-align: center;
+    }
+</style>
+
+
 <body>
     <div class="container">
 
@@ -25,8 +32,9 @@
 
                         },
                         { "sName": "ClientName" },
-                        { "sName": "ClientStatus" },
+                        { "sName": "ClientStatus", sClass: "alignCenter" },
                         {
+                            sClass: "alignCenter",
                             "mRender": function (data, type, full) {
                                 return '<a href=@Url.Action("Edit", "Clients")' + '/' + full[0] + '>Edit</a>';
                             }
