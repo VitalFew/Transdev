@@ -23,6 +23,13 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Controllers
             _dataProvider = dataProvider;
         }
 
+        public ActionResult Index(Guid id)
+        {
+            var client = _catalogClientProvider.GetAll().Where(x => x.CLIENT_ID.Equals(id)).FirstOrDefault();
+
+            return View(client);
+        }
+
         // GET: ClientObjects
         public ActionResult Get(Guid id)
         {

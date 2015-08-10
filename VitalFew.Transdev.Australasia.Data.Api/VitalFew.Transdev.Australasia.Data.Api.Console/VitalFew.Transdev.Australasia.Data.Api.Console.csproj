@@ -424,6 +424,7 @@
     <Content Include="Views\Default\Index.cshtml" />
     <Content Include="Views\ClientObjects\Add.cshtml" />
     <Content Include="Views\ClientObjects\Edit.cshtml" />
+    <Content Include="Views\ClientObjects\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
