@@ -1,38 +1,11 @@
 ﻿@model VitalFew.Transdev.Australasia.Data.Core.Database.VF_API_CATALOG_CLIENTS
 
 @{
-    ViewBag.Title = "Edit Client";
+    ViewBag.Title = "Edit an Existing Client";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@section scripts
-{
-    <script language="javascript">
-        $(function () {
-            $('#btToken').click(function (e) {
-
-                alert('sda');
-
-                $.ajax({
-                    url: "@Url.Action("GetToken","Clients")",
-                    type: "GET",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                error: function (response) {
-                    alert(response.responseText);
-                },
-                success: function (response) {
-                    $('#tokenInput').val(response);
-                }
-            });
-
-        });
-        });
-
-     </script>
-}
-
-<h2>Edit Client</h2>
+<h2>Edit an Existing Client</h2>
 
 @using (Html.BeginForm())
 {
@@ -85,4 +58,29 @@
     </p>
 
     @Html.Action("Get", "ClientObjects", new { @id= Model.CLIENT_ID })
+}
+
+
+@section scripts
+{
+    <script language="javascript">
+        $(function () {
+            $('#btToken').click(function (e) {
+                $.ajax({
+                    url: "@Url.Action("GetToken","Clients")",
+                    type: "GET",
+                    cache: false,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    error: function (response) {
+                        alert(response.responseText);
+                    },
+                    success: function (response) {
+                        $('#tokenInput').val(response);
+                }
+            });
+            });
+        });
+
+    </script>
 }
