@@ -51,8 +51,9 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Controllers
             model.DB_OBJECT_CREATED_DATE = DateTime.Now;
 
             await _clientObjectProvider.Save(model);
+            var client = _catalogClientProvider.GetAll().Where(x => x.TRANSDEV_ID == model.TRANSDEV_ID).First();
 
-            return RedirectToAction("Edit", "Clients", new { id = model.CLIENT_OBJECT_ID });
+            return RedirectToAction("Edit", "Clients", new { id = client.CLIENT_ID });
         }
 
         [HttpGet]
