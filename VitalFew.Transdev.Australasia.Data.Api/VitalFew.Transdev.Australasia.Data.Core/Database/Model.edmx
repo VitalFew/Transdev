@@ -17,11 +17,12 @@
         </EntityType>
         <EntityType Name="VF_API_CLIENT_OBJECTS">
           <Key>
-            <PropertyRef Name="CLIENT_OBJECT_ID" />
+            <PropertyRef Name="TRANSDEV_ID" />
+            <PropertyRef Name="TRANSDEV_PARAM" />
           </Key>
-          <Property Name="CLIENT_OBJECT_ID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="TRANSDEV_ID" Type="int" Nullable="false" />
           <Property Name="TRANSDEV_PARAM" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CLIENT_OBJECT_ID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="DATA_PROVIDER_ID" Type="int" Nullable="false" />
           <Property Name="DB_SERVER_NAME" Type="varchar" MaxLength="250" />
           <Property Name="DB_INSTANCE_NAME" Type="varchar" MaxLength="250" />
@@ -32,9 +33,10 @@
           <Property Name="DB_AUTHENTICATION_TYPE" Type="varchar" MaxLength="250" />
           <Property Name="DB_INTEGRATED_SECURITY" Type="bit" />
           <Property Name="DB_SCHEMA" Type="varchar" MaxLength="250" />
+          <Property Name="DB_OBJECT_TYPE" Type="varchar" MaxLength="250" />
           <Property Name="DB_OBJECT_NAME" Type="varchar" MaxLength="250" />
-          <Property Name="DB_OBJECT_CREATED_DATE" Type="datetime" Nullable="false" />
-          <Property Name="DB_OBJECT_MODIFIED_DATE" Type="datetime" Nullable="false" />
+          <Property Name="DB_OBJECT_CREATED_DATE" Type="datetime" />
+          <Property Name="DB_OBJECT_MODIFIED_DATE" Type="datetime" />
         </EntityType>
         <EntityType Name="VF_DATA_PROVIDER">
           <Key>
@@ -43,7 +45,7 @@
           <Property Name="DATA_PROVIDER_ID" Type="int" Nullable="false" />
           <Property Name="DATA_PROVIDER_Name" Type="varchar" MaxLength="350" Nullable="false" />
         </EntityType>
-        <Association Name="FK_VF_API_CLIENT_OBJECTS_VF_API_CATALOG_CLIENTS1">
+        <Association Name="FK_VF_API_CLIENT_OBJECTS_VF_API_CATALOG_CLIENTS">
           <End Role="VF_API_CATALOG_CLIENTS" Type="Self.VF_API_CATALOG_CLIENTS" Multiplicity="1" />
           <End Role="VF_API_CLIENT_OBJECTS" Type="Self.VF_API_CLIENT_OBJECTS" Multiplicity="*" />
           <ReferentialConstraint>
@@ -67,17 +69,33 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_VF_DATA_PROVIDER_VF_DATA_PROVIDER">
+          <End Role="VF_DATA_PROVIDER" Type="Self.VF_DATA_PROVIDER" Multiplicity="1" />
+          <End Role="VF_DATA_PROVIDER1" Type="Self.VF_DATA_PROVIDER" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="VF_DATA_PROVIDER">
+              <PropertyRef Name="DATA_PROVIDER_ID" />
+            </Principal>
+            <Dependent Role="VF_DATA_PROVIDER1">
+              <PropertyRef Name="DATA_PROVIDER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="DataModelStoreContainer">
           <EntitySet Name="VF_API_CATALOG_CLIENTS" EntityType="Self.VF_API_CATALOG_CLIENTS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VF_API_CLIENT_OBJECTS" EntityType="Self.VF_API_CLIENT_OBJECTS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VF_DATA_PROVIDER" EntityType="Self.VF_DATA_PROVIDER" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_VF_API_CLIENT_OBJECTS_VF_API_CATALOG_CLIENTS1" Association="Self.FK_VF_API_CLIENT_OBJECTS_VF_API_CATALOG_CLIENTS1">
+          <AssociationSet Name="FK_VF_API_CLIENT_OBJECTS_VF_API_CATALOG_CLIENTS" Association="Self.FK_VF_API_CLIENT_OBJECTS_VF_API_CATALOG_CLIENTS">
             <End Role="VF_API_CATALOG_CLIENTS" EntitySet="VF_API_CATALOG_CLIENTS" />
             <End Role="VF_API_CLIENT_OBJECTS" EntitySet="VF_API_CLIENT_OBJECTS" />
           </AssociationSet>
           <AssociationSet Name="FK_VF_API_CLIENT_OBJECTS_VF_DATA_PROVIDER" Association="Self.FK_VF_API_CLIENT_OBJECTS_VF_DATA_PROVIDER">
             <End Role="VF_DATA_PROVIDER" EntitySet="VF_DATA_PROVIDER" />
             <End Role="VF_API_CLIENT_OBJECTS" EntitySet="VF_API_CLIENT_OBJECTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VF_DATA_PROVIDER_VF_DATA_PROVIDER" Association="Self.FK_VF_DATA_PROVIDER_VF_DATA_PROVIDER">
+            <End Role="VF_DATA_PROVIDER" EntitySet="VF_DATA_PROVIDER" />
+            <End Role="VF_DATA_PROVIDER1" EntitySet="VF_DATA_PROVIDER" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -88,13 +106,17 @@
           <EntitySet Name="VF_API_CATALOG_CLIENTS" EntityType="DataModel.VF_API_CATALOG_CLIENTS" />
           <EntitySet Name="VF_API_CLIENT_OBJECTS" EntityType="DataModel.VF_API_CLIENT_OBJECTS" />
           <EntitySet Name="VF_DATA_PROVIDER" EntityType="DataModel.VF_DATA_PROVIDER" />
-          <AssociationSet Name="FK_VF_API_CLIENT_OBJECTS_VF_API_CATALOG_CLIENTS1" Association="DataModel.FK_VF_API_CLIENT_OBJECTS_VF_API_CATALOG_CLIENTS1">
+          <AssociationSet Name="FK_VF_API_CLIENT_OBJECTS_VF_API_CATALOG_CLIENTS" Association="DataModel.FK_VF_API_CLIENT_OBJECTS_VF_API_CATALOG_CLIENTS">
             <End Role="VF_API_CATALOG_CLIENTS" EntitySet="VF_API_CATALOG_CLIENTS" />
             <End Role="VF_API_CLIENT_OBJECTS" EntitySet="VF_API_CLIENT_OBJECTS" />
           </AssociationSet>
           <AssociationSet Name="FK_VF_API_CLIENT_OBJECTS_VF_DATA_PROVIDER" Association="DataModel.FK_VF_API_CLIENT_OBJECTS_VF_DATA_PROVIDER">
             <End Role="VF_DATA_PROVIDER" EntitySet="VF_DATA_PROVIDER" />
             <End Role="VF_API_CLIENT_OBJECTS" EntitySet="VF_API_CLIENT_OBJECTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VF_DATA_PROVIDER_VF_DATA_PROVIDER" Association="DataModel.FK_VF_DATA_PROVIDER_VF_DATA_PROVIDER">
+            <End Role="VF_DATA_PROVIDER" EntitySet="VF_DATA_PROVIDER" />
+            <End Role="VF_DATA_PROVIDER1" EntitySet="VF_DATA_PROVIDER" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="VF_API_CATALOG_CLIENTS">
@@ -106,15 +128,16 @@
           <Property Name="CLIENT_NAME" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="CLIENT_TOKEN" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="CLIENT_STATUS" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="VF_API_CLIENT_OBJECTS" Relationship="DataModel.FK_VF_API_CLIENT_OBJECTS_VF_API_CATALOG_CLIENTS1" FromRole="VF_API_CATALOG_CLIENTS" ToRole="VF_API_CLIENT_OBJECTS" />
+          <NavigationProperty Name="VF_API_CLIENT_OBJECTS" Relationship="DataModel.FK_VF_API_CLIENT_OBJECTS_VF_API_CATALOG_CLIENTS" FromRole="VF_API_CATALOG_CLIENTS" ToRole="VF_API_CLIENT_OBJECTS" />
         </EntityType>
         <EntityType Name="VF_API_CLIENT_OBJECTS">
           <Key>
-            <PropertyRef Name="CLIENT_OBJECT_ID" />
+            <PropertyRef Name="TRANSDEV_ID" />
+            <PropertyRef Name="TRANSDEV_PARAM" />
           </Key>
-          <Property Name="CLIENT_OBJECT_ID" Type="Guid" Nullable="false" />
           <Property Name="TRANSDEV_ID" Type="Int32" Nullable="false" />
           <Property Name="TRANSDEV_PARAM" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CLIENT_OBJECT_ID" Type="Guid" Nullable="false" />
           <Property Name="DATA_PROVIDER_ID" Type="Int32" Nullable="false" />
           <Property Name="DB_SERVER_NAME" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="DB_INSTANCE_NAME" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
@@ -125,10 +148,11 @@
           <Property Name="DB_AUTHENTICATION_TYPE" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="DB_INTEGRATED_SECURITY" Type="Boolean" />
           <Property Name="DB_SCHEMA" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="DB_OBJECT_TYPE" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="DB_OBJECT_NAME" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="DB_OBJECT_CREATED_DATE" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="DB_OBJECT_MODIFIED_DATE" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="VF_API_CATALOG_CLIENTS" Relationship="DataModel.FK_VF_API_CLIENT_OBJECTS_VF_API_CATALOG_CLIENTS1" FromRole="VF_API_CLIENT_OBJECTS" ToRole="VF_API_CATALOG_CLIENTS" />
+          <Property Name="DB_OBJECT_CREATED_DATE" Type="DateTime" Precision="3" />
+          <Property Name="DB_OBJECT_MODIFIED_DATE" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="VF_API_CATALOG_CLIENTS" Relationship="DataModel.FK_VF_API_CLIENT_OBJECTS_VF_API_CATALOG_CLIENTS" FromRole="VF_API_CLIENT_OBJECTS" ToRole="VF_API_CATALOG_CLIENTS" />
           <NavigationProperty Name="VF_DATA_PROVIDER" Relationship="DataModel.FK_VF_API_CLIENT_OBJECTS_VF_DATA_PROVIDER" FromRole="VF_API_CLIENT_OBJECTS" ToRole="VF_DATA_PROVIDER" />
         </EntityType>
         <EntityType Name="VF_DATA_PROVIDER">
@@ -138,8 +162,10 @@
           <Property Name="DATA_PROVIDER_ID" Type="Int32" Nullable="false" />
           <Property Name="DATA_PROVIDER_Name" Type="String" Nullable="false" MaxLength="350" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="VF_API_CLIENT_OBJECTS" Relationship="DataModel.FK_VF_API_CLIENT_OBJECTS_VF_DATA_PROVIDER" FromRole="VF_DATA_PROVIDER" ToRole="VF_API_CLIENT_OBJECTS" />
+          <NavigationProperty Name="VF_DATA_PROVIDER1" Relationship="DataModel.FK_VF_DATA_PROVIDER_VF_DATA_PROVIDER" FromRole="VF_DATA_PROVIDER" ToRole="VF_DATA_PROVIDER1" />
+          <NavigationProperty Name="VF_DATA_PROVIDER2" Relationship="DataModel.FK_VF_DATA_PROVIDER_VF_DATA_PROVIDER" FromRole="VF_DATA_PROVIDER1" ToRole="VF_DATA_PROVIDER" />
         </EntityType>
-        <Association Name="FK_VF_API_CLIENT_OBJECTS_VF_API_CATALOG_CLIENTS1">
+        <Association Name="FK_VF_API_CLIENT_OBJECTS_VF_API_CATALOG_CLIENTS">
           <End Type="DataModel.VF_API_CATALOG_CLIENTS" Role="VF_API_CATALOG_CLIENTS" Multiplicity="1" />
           <End Type="DataModel.VF_API_CLIENT_OBJECTS" Role="VF_API_CLIENT_OBJECTS" Multiplicity="*" />
           <ReferentialConstraint>
@@ -163,7 +189,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <Association Name="FK_VF_DATA_PROVIDER_VF_DATA_PROVIDER">
+          <End Type="DataModel.VF_DATA_PROVIDER" Role="VF_DATA_PROVIDER" Multiplicity="1" />
+          <End Type="DataModel.VF_DATA_PROVIDER" Role="VF_DATA_PROVIDER1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="VF_DATA_PROVIDER">
+              <PropertyRef Name="DATA_PROVIDER_ID" />
+            </Principal>
+            <Dependent Role="VF_DATA_PROVIDER1">
+              <PropertyRef Name="DATA_PROVIDER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -186,6 +224,7 @@
                 <ScalarProperty Name="DB_OBJECT_MODIFIED_DATE" ColumnName="DB_OBJECT_MODIFIED_DATE" />
                 <ScalarProperty Name="DB_OBJECT_CREATED_DATE" ColumnName="DB_OBJECT_CREATED_DATE" />
                 <ScalarProperty Name="DB_OBJECT_NAME" ColumnName="DB_OBJECT_NAME" />
+                <ScalarProperty Name="DB_OBJECT_TYPE" ColumnName="DB_OBJECT_TYPE" />
                 <ScalarProperty Name="DB_SCHEMA" ColumnName="DB_SCHEMA" />
                 <ScalarProperty Name="DB_INTEGRATED_SECURITY" ColumnName="DB_INTEGRATED_SECURITY" />
                 <ScalarProperty Name="DB_AUTHENTICATION_TYPE" ColumnName="DB_AUTHENTICATION_TYPE" />
@@ -196,9 +235,9 @@
                 <ScalarProperty Name="DB_INSTANCE_NAME" ColumnName="DB_INSTANCE_NAME" />
                 <ScalarProperty Name="DB_SERVER_NAME" ColumnName="DB_SERVER_NAME" />
                 <ScalarProperty Name="DATA_PROVIDER_ID" ColumnName="DATA_PROVIDER_ID" />
+                <ScalarProperty Name="CLIENT_OBJECT_ID" ColumnName="CLIENT_OBJECT_ID" />
                 <ScalarProperty Name="TRANSDEV_PARAM" ColumnName="TRANSDEV_PARAM" />
                 <ScalarProperty Name="TRANSDEV_ID" ColumnName="TRANSDEV_ID" />
-                <ScalarProperty Name="CLIENT_OBJECT_ID" ColumnName="CLIENT_OBJECT_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

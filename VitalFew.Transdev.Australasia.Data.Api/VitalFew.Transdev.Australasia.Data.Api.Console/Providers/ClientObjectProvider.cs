@@ -11,7 +11,7 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Console.Providers
         public IQueryable<VF_API_CLIENT_OBJECTS> GetAll()
         {
             var context = new Entities();
-            return context.VF_API_CLIENT_OBJECTS.AsQueryable();
+            return context.VF_API_CLIENT_OBJECTS.Include(e => e.VF_API_CATALOG_CLIENTS).AsQueryable();
         }
 
         public async Task<int> Save(VF_API_CLIENT_OBJECTS clientObject)

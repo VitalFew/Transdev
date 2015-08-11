@@ -11,9 +11,7 @@ namespace VitalFew.Transdev.Australasia.Data.Core.Database
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class VF_API_CATALOG_CLIENTS
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,14 +22,8 @@ namespace VitalFew.Transdev.Australasia.Data.Core.Database
     
         public int TRANSDEV_ID { get; set; }
         public System.Guid CLIENT_ID { get; set; }
-        [DisplayName("Client Name")]
-        [Required]
         public string CLIENT_NAME { get; set; }
-        [DisplayName("Client Token")]
-        [Required]
         public string CLIENT_TOKEN { get; set; }
-        [DisplayName("Client Status")]
-        [Required]
         public bool CLIENT_STATUS { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
