@@ -2,6 +2,7 @@
 using System.Data;
 using System.Linq;
 using System.Security.Claims;
+using VitalFew.Transdev.Australasia.Data.Core.Database;
 using VitalFew.Transdev.Australasia.DataPublisher.Providers.Contract;
 
 namespace VitalFew.Transdev.Australasia.DataPublisher.Providers
@@ -44,7 +45,7 @@ namespace VitalFew.Transdev.Australasia.DataPublisher.Providers
 
         private Guid? Authorize(string clientName, string clientToken)
         {
-            using (var context = new Models.Database.Entities())
+            using (var context = new Entities())
             {
                 var client = context.VF_API_CATALOG_CLIENTS.Where(e => e.CLIENT_NAME == clientName
                     && e.CLIENT_TOKEN == clientToken

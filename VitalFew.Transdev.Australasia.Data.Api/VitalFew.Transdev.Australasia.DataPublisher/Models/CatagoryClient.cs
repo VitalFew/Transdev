@@ -6,7 +6,7 @@ namespace VitalFew.Transdev.Australasia.DataPublisher.Models
     {
         public int Id { get; set; }
 
-        public Guid? ClientId { get; set; }
+        public Guid ClientId { get; set; }
 
         public string ClientName { get; set; }
 

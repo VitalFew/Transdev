@@ -1,7 +1,7 @@
 ﻿using System.Data;
 using System.Threading.Tasks;
+using VitalFew.Transdev.Australasia.Data.Core.Database;
 using VitalFew.Transdev.Australasia.Data.Core.Result;
-using VitalFew.Transdev.Australasia.DataPublisher.Models.Database;
 
 namespace VitalFew.Transdev.Australasia.DataPublisher.Providers.Contract
 {
