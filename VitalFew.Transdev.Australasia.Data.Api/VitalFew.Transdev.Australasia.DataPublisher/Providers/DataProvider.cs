@@ -1,9 +1,9 @@
 ﻿using System.Data;
 using System.Threading.Tasks;
 using VitalFew.Transdev.Australasia.Data.Core.Adaptors;
+using VitalFew.Transdev.Australasia.Data.Core.Database;
 using VitalFew.Transdev.Australasia.Data.Core.Parameters;
 using VitalFew.Transdev.Australasia.Data.Core.Result;
-using VitalFew.Transdev.Australasia.DataPublisher.Models.Database;
 using VitalFew.Transdev.Australasia.DataPublisher.Providers.Contract;
 
 namespace VitalFew.Transdev.Australasia.DataPublisher.Providers
@@ -18,7 +18,7 @@ namespace VitalFew.Transdev.Australasia.DataPublisher.Providers
         /// <returns>QueryResult of DataTable</returns>
         public async Task<QueryResult<DataTable>> Execute(VF_API_CLIENT_OBJECTS client)
         {
-            using (var context = new Models.Database.Entities())
+            using (var context = new Entities())
             {
                 var adaptor = new SqlServerTableAdaptor();
 

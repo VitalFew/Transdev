@@ -25,7 +25,7 @@ namespace VitalFew.Transdev.Australasia.DataPublisher.Controllers
         /// <returns></returns>
         public async Task<CatagoryClient> Get(Guid id)
         {
-            var categories = await _catalogProvider.GetAll().FirstOrDefaultAsync(x => x.CLIENT_ID.HasValue && x.CLIENT_ID.Value.Equals(id));
+            var categories = await _catalogProvider.GetAll().FirstOrDefaultAsync(x => x.CLIENT_ID.Equals(id));
 
             return categories.GetClientDto();
         }

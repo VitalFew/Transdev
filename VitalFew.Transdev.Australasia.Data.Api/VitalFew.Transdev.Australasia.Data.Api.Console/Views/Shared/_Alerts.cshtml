@@ -1,0 +1,28 @@
+﻿
+<div style="width:80%">
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <br />
+        <div class="alert alert-danger" role="alert">
+            <b>Error : </b> @TempData["ErrorMessage"]
+
+            @if (bool.Parse(System.Configuration.ConfigurationManager.AppSettings["EnableDebug"]))
+            {
+                if (TempData["Exception"] != null)
+                {
+                    <p>
+                        @((Exception)TempData["Exception"]).ToString();
+                    </p>
+                }
+            }
+        </div>
+    }
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <br />
+        <div class="alert alert-success" role="alert">
+            <b>Success : </b> @TempData["SuccessMessage"]
+        </div>
+    }
+</div>

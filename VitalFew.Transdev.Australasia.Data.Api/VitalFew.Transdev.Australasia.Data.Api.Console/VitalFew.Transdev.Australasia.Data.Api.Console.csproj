@@ -157,7 +157,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
-    <Compile Include="Controllers\ClientObjectsController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\EndpointsController.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Models\Dto\JQueryDataTableParamModel.cs" />
@@ -413,7 +414,7 @@
     </Content>
     <Content Include="Scripts\jquery-2.1.4.min.map" />
     <None Include="Scripts\_references.js" />
-    <Content Include="Views\ClientObjects\_ClientObjectsView.cshtml" />
+    <Content Include="Views\Endpoints\_EndpointsView.cshtml" />
     <Content Include="Views\Clients\Add.cshtml" />
     <Content Include="Views\Clients\Edit.cshtml" />
     <Content Include="Views\Clients\Index.cshtml" />
@@ -424,9 +425,10 @@
     <Content Include="Views\Default\About.cshtml" />
     <Content Include="Views\Default\Contact.cshtml" />
     <Content Include="Views\Default\Index.cshtml" />
-    <Content Include="Views\ClientObjects\Add.cshtml" />
-    <Content Include="Views\ClientObjects\Edit.cshtml" />
-    <Content Include="Views\ClientObjects\Index.cshtml" />
+    <Content Include="Views\Endpoints\Add.cshtml" />
+    <Content Include="Views\Endpoints\Edit.cshtml" />
+    <Content Include="Views\Endpoints\Index.cshtml" />
+    <Content Include="Views\Shared\_Alerts.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -436,6 +438,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

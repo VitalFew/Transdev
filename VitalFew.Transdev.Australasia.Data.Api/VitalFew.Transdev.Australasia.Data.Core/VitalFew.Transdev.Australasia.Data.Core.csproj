@@ -78,6 +78,7 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Exceptions\AdaptorExecuteException.cs" />
+    <Compile Include="Framework\ClientToken.cs" />
     <Compile Include="Processor\IProcessor.cs" />
     <Compile Include="Adaptors\Adaptor.cs" />
     <Compile Include="Parameters\Interfaces\IParameters.cs" />

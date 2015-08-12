@@ -53,11 +53,13 @@
         </div>
     </div>
 
+    <br />
+
     <p>
-        <a href="@Url.Action("Add","ClientObjects" ,  new { id= Model.CLIENT_ID } )" class="btn btn-primary btn-sm">Create a New Endpoint</a>
+        <a href="@Url.Action("Add","Endpoints" ,  new { id= Model.CLIENT_ID } )" class="btn btn-primary btn-sm">Create a New Endpoint</a>
     </p>
 
-    @Html.Action("Get", "ClientObjects", new { @id= Model.CLIENT_ID })
+    @Html.Action("Get", "Endpoints", new { @id= Model.CLIENT_ID })
 }
 
 

@@ -16,7 +16,7 @@ namespace VitalFew.Transdev.Australasia.DataPublisher.Controllers
 
         public ActionResult Index()
         {
-            return View("~/App/views/layout/layout.cshtml");
+            return View("");
         }
     }
 }

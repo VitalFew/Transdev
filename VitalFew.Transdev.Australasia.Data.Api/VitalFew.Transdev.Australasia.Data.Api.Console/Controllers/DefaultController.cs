@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace VitalFew.Transdev.Australasia.Data.Api.Console.Controllers
 {
-    public class DefaultController : Controller
+    public class DefaultController : BaseController
     {
         public ActionResult Index()
         {

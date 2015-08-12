@@ -13,7 +13,7 @@ namespace VitalFew.Transdev.Australasia.Data.Core.Database
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
-
+    
     public partial class VF_API_CLIENT_OBJECTS
     {
         public int TRANSDEV_ID { get; set; }
@@ -45,9 +45,7 @@ namespace VitalFew.Transdev.Australasia.Data.Core.Database
         public string DB_AUTHENTICATION_TYPE { get; set; }
         [DisplayName("Integrated Security")]
         public Nullable<bool> DB_INTEGRATED_SECURITY { get; set; }
-        [DisplayName("Db Schema")]
         public string DB_SCHEMA { get; set; }
-        [DisplayName("DB Object Name")]
         public string DB_OBJECT_TYPE { get; set; }
         public string DB_OBJECT_NAME { get; set; }
         public Nullable<System.DateTime> DB_OBJECT_CREATED_DATE { get; set; }

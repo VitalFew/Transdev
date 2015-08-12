@@ -6,16 +6,16 @@ using System.Web.Mvc;
 using VitalFew.Transdev.Australasia.Data.Api.Console.Providers.Contract;
 using VitalFew.Transdev.Australasia.Data.Core.Database;
 
-namespace VitalFew.Transdev.Australasia.Data.Api.Controllers
+namespace VitalFew.Transdev.Australasia.Data.Api.Console.Controllers
 {
-    public class ClientObjectsController : Controller
+    public class EndpointsController : BaseController
     {
         private readonly ICatalogClientProvider _catalogClientProvider;
         private readonly IClientObjectProvider _clientObjectProvider;
         private readonly IDataProvider _dataProvider;
 
 
-        public ClientObjectsController(ICatalogClientProvider catalogClientProvider, 
+        public EndpointsController(ICatalogClientProvider catalogClientProvider, 
             IClientObjectProvider clientObjectProvider, IDataProvider dataProvider)
         {
             _catalogClientProvider = catalogClientProvider;
@@ -30,13 +30,12 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Controllers
             return View(client);
         }
 
-        // GET: ClientObjects
         public ActionResult Get(Guid id)
         {
             var objects = _clientObjectProvider.GetAll()
                 .Where(x => x.VF_API_CATALOG_CLIENTS.CLIENT_ID == id).ToList();
 
-            return PartialView("~/Views/ClientObjects/_ClientObjectsView.cshtml", objects);
+            return PartialView("~/Views/Endpoints/_EndpointsView.cshtml", objects);
         }
 
         [HttpGet]
@@ -54,13 +53,28 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Controllers
         [HttpPost]
         public async Task<ActionResult> Add(VF_API_CLIENT_OBJECTS model)
         {
-            model.DB_OBJECT_MODIFIED_DATE = DateTime.Now;
-            model.DB_OBJECT_CREATED_DATE = DateTime.Now;
+            try
+            {
+                model.DB_OBJECT_MODIFIED_DATE = DateTime.Now;
+                model.DB_OBJECT_CREATED_DATE = DateTime.Now;
 
-            await _clientObjectProvider.Save(model);
-            var client = _catalogClientProvider.GetAll().Where(x => x.TRANSDEV_ID == model.TRANSDEV_ID).First();
+                await _clientObjectProvider.Save(model);
+                var client = _catalogClientProvider.GetAll().Where(x => x.TRANSDEV_ID == model.TRANSDEV_ID).First();
 
-            return RedirectToAction("Edit", "Clients", new { id = client.CLIENT_ID });
+                SuccessMessage = "New Endpoint is Added";
+
+                return RedirectToAction("Edit", "Clients", new { id = client.CLIENT_ID });
+            }
+            catch(Exception ex)
+            {
+                ExceptionDetails = ex;
+                ErrorMessage = "Unexpected error occured while creating an endpoint";
+            }
+
+            List<SelectListItem> items = GetProviders();
+            ViewBag.Providviders = new SelectList(items, "Value", "Text");
+
+            return View(model);
         }
 
         [HttpGet]
@@ -76,11 +90,27 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Controllers
         [HttpPost]
         public async Task<ActionResult> Edit(VF_API_CLIENT_OBJECTS model)
         {
-            model.DB_OBJECT_MODIFIED_DATE = DateTime.Now;
-            await _clientObjectProvider.Save(model);
+            try
+            {
+                model.DB_OBJECT_MODIFIED_DATE = DateTime.Now;
+                await _clientObjectProvider.Save(model);
 
-            var client = _catalogClientProvider.GetAll().Where(x => x.TRANSDEV_ID == model.TRANSDEV_ID).First();
-            return RedirectToAction("Edit", "Clients", new { id = client.CLIENT_ID });
+                var client = _catalogClientProvider.GetAll().Where(x => x.TRANSDEV_ID == model.TRANSDEV_ID).First();
+
+                SuccessMessage = "Endpoint is Updated";
+
+                return RedirectToAction("Edit", "Clients", new { id = client.CLIENT_ID });
+            }
+            catch (Exception ex)
+            {
+                ExceptionDetails = ex;
+                ErrorMessage = "Unexpected error occured while updating the endpoint";
+            }
+
+            List<SelectListItem> items = GetProviders();
+            ViewBag.Providviders = new SelectList(items, "Value", "Text");
+
+            return View(model);
         }
 
         private List<SelectListItem> GetProviders()

@@ -13,7 +13,7 @@ namespace VitalFew.Transdev.Australasia.Data.Core.Database
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
-
+    
     public partial class VF_API_CATALOG_CLIENTS
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]

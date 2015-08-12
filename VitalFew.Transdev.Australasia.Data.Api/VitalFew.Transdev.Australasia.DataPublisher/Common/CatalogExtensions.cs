@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using VitalFew.Transdev.Australasia.Data.Core.Database;
 using VitalFew.Transdev.Australasia.DataPublisher.Models;
-using VitalFew.Transdev.Australasia.DataPublisher.Models.Database;
 
 namespace VitalFew.Transdev.Australasia.DataPublisher.Common
 {
@@ -29,7 +29,7 @@ namespace VitalFew.Transdev.Australasia.DataPublisher.Common
                 Id = catalog.TRANSDEV_ID,
                 ClientId = catalog.CLIENT_ID,
                 ClientName = catalog.CLIENT_NAME,
-                ClientStatus = (catalog.CLIENT_STATUS.HasValue ? (catalog.CLIENT_STATUS.Value ? "Active" : "In-active") : "In-active"),
+                ClientStatus = (catalog.CLIENT_STATUS ? (catalog.CLIENT_STATUS ? "Active" : "In-active") : "In-active"),
                 ClientToken = catalog.CLIENT_TOKEN
             };
 

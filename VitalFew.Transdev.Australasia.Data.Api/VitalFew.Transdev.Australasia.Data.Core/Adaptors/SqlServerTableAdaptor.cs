@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Data.SqlClient;
 using VitalFew.Transdev.Australasia.Data.Core.Exceptions;
 using VitalFew.Transdev.Australasia.Data.Core.Parameters;
@@ -22,8 +23,17 @@ namespace VitalFew.Transdev.Australasia.Data.Core.Adaptors
                 var sqlConnection = new SqlConnection();
 
                 var sqlConnectionStringBuilder = new SqlConnectionStringBuilder();
-                sqlConnectionStringBuilder.UserID = parameters.UserID;
-                sqlConnectionStringBuilder.Password = parameters.Password;
+
+                if (!string.IsNullOrEmpty(parameters.UserID))
+                {
+                    sqlConnectionStringBuilder.UserID = parameters.UserID;
+                }
+
+                if (!string.IsNullOrEmpty(parameters.Password))
+                {
+                    sqlConnectionStringBuilder.Password = parameters.Password;
+                }
+                             
                 sqlConnectionStringBuilder.InitialCatalog = parameters.InitialCatalog;
                 sqlConnectionStringBuilder.DataSource = parameters.DataSource;
 
@@ -53,12 +63,10 @@ namespace VitalFew.Transdev.Australasia.Data.Core.Adaptors
                     return queryResult;
                 }
             }
-            catch
+            catch(Exception ex)
             {
-                throw new AdaptorExecuteException();
+                throw new AdaptorExecuteException(ex.Message);
             }
-
-            return null;
         }
     }
 }
