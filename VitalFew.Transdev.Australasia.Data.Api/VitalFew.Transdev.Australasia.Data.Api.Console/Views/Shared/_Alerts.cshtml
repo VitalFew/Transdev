@@ -6,11 +6,14 @@
         <div class="alert alert-danger" role="alert">
             <b>Error : </b> @TempData["ErrorMessage"]
 
-            @if (TempData["Exception"] != null)
+            @if (bool.Parse(System.Configuration.ConfigurationManager.AppSettings["EnableDebug"]))
             {
-                <p>
-                    @((Exception)TempData["Exception"]).ToString();
-                </p>
+                if (TempData["Exception"] != null)
+                {
+                    <p>
+                        @((Exception)TempData["Exception"]).ToString();
+                    </p>
+                }
             }
         </div>
     }
