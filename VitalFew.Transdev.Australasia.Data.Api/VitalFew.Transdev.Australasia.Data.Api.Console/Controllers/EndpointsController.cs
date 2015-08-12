@@ -8,14 +8,14 @@ using VitalFew.Transdev.Australasia.Data.Core.Database;
 
 namespace VitalFew.Transdev.Australasia.Data.Api.Console.Controllers
 {
-    public class ClientObjectsController : BaseController
+    public class EndpointsController : BaseController
     {
         private readonly ICatalogClientProvider _catalogClientProvider;
         private readonly IClientObjectProvider _clientObjectProvider;
         private readonly IDataProvider _dataProvider;
 
 
-        public ClientObjectsController(ICatalogClientProvider catalogClientProvider, 
+        public EndpointsController(ICatalogClientProvider catalogClientProvider, 
             IClientObjectProvider clientObjectProvider, IDataProvider dataProvider)
         {
             _catalogClientProvider = catalogClientProvider;
@@ -35,7 +35,7 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Console.Controllers
             var objects = _clientObjectProvider.GetAll()
                 .Where(x => x.VF_API_CATALOG_CLIENTS.CLIENT_ID == id).ToList();
 
-            return PartialView("~/Views/ClientObjects/_ClientObjectsView.cshtml", objects);
+            return PartialView("~/Views/Endpoints/_EndpointsView.cshtml", objects);
         }
 
         [HttpGet]

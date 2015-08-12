@@ -10,9 +10,9 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Console
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-              name: "ClientObjects",
-              url: "ClientObjects/{id}",
-              defaults: new { controller = "ClientObjects", action = "Index", id = UrlParameter.Optional, }
+              name: "Endpoints",
+              url: "Endpoints/{id}",
+              defaults: new { controller = "Endpoints", action = "Index", id = UrlParameter.Optional, }
             );
 
             routes.MapRoute(
