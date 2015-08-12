@@ -8,6 +8,14 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Console.Controllers
 {
     public class BaseController : Controller
     {
+        public Exception ExceptionDetails
+        {
+            set
+            {
+                TempData["Exception"] = value;
+            }
+        }
+
         public string ErrorMessage
         {
             set

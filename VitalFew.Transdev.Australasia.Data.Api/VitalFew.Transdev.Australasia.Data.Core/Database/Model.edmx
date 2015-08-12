@@ -24,15 +24,15 @@
           <Property Name="TRANSDEV_PARAM" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="CLIENT_OBJECT_ID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="DATA_PROVIDER_ID" Type="int" Nullable="false" />
-          <Property Name="DB_SERVER_NAME" Type="varchar" MaxLength="250" />
+          <Property Name="DB_SERVER_NAME" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="DB_SERVER_PORT" Type="varchar" MaxLength="50" />
-          <Property Name="DB_NAME" Type="varchar" MaxLength="250" />
+          <Property Name="DB_NAME" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="DB_USER" Type="varchar" MaxLength="250" />
           <Property Name="DB_USER_PASSWORD" Type="varchar" MaxLength="250" />
           <Property Name="DB_AUTHENTICATION_TYPE" Type="varchar" MaxLength="250" />
           <Property Name="DB_INTEGRATED_SECURITY" Type="bit" />
-          <Property Name="DB_SCHEMA" Type="varchar" MaxLength="250" />
-          <Property Name="DB_OBJECT_NAME" Type="varchar" MaxLength="250" />
+          <Property Name="DB_SCHEMA" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="DB_OBJECT_NAME" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="DB_OBJECT_CREATED_DATE" Type="datetime" />
           <Property Name="DB_OBJECT_MODIFIED_DATE" Type="datetime" />
         </EntityType>
@@ -137,15 +137,15 @@
           <Property Name="TRANSDEV_PARAM" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CLIENT_OBJECT_ID" Type="Guid" Nullable="false" />
           <Property Name="DATA_PROVIDER_ID" Type="Int32" Nullable="false" />
-          <Property Name="DB_SERVER_NAME" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="DB_SERVER_NAME" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="DB_SERVER_PORT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DB_NAME" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="DB_NAME" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="DB_USER" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="DB_USER_PASSWORD" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="DB_AUTHENTICATION_TYPE" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="DB_INTEGRATED_SECURITY" Type="Boolean" />
-          <Property Name="DB_SCHEMA" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="DB_OBJECT_NAME" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="DB_SCHEMA" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="DB_OBJECT_NAME" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="DB_OBJECT_CREATED_DATE" Type="DateTime" Precision="3" />
           <Property Name="DB_OBJECT_MODIFIED_DATE" Type="DateTime" Precision="3" />
           <NavigationProperty Name="VF_API_CATALOG_CLIENTS" Relationship="DataModel.FK_VF_API_CLIENT_OBJECTS_VF_API_CATALOG_CLIENTS" FromRole="VF_API_CLIENT_OBJECTS" ToRole="VF_API_CATALOG_CLIENTS" />

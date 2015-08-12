@@ -44,8 +44,9 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Console.Controllers
 
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception ex)
             {
+                ExceptionDetails = ex;
                 ErrorMessage = "Unexpected error occured while updating the client";
             }
 
@@ -70,8 +71,9 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Console.Controllers
 
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception ex)
             {
+                ExceptionDetails = ex;
                 ErrorMessage = "Unexpected error occured while creating a client";
             }
 

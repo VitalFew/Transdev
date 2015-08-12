@@ -5,6 +5,13 @@
         <br />
         <div class="alert alert-danger" role="alert">
             <b>Error : </b> @TempData["ErrorMessage"]
+
+            @if (TempData["Exception"] != null)
+            {
+                <p>
+                    @((Exception)TempData["Exception"]).ToString();
+                </p>
+            }
         </div>
     }
 

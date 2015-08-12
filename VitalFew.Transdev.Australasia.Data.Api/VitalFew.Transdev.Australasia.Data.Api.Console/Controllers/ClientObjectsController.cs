@@ -65,10 +65,14 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Console.Controllers
 
                 return RedirectToAction("Edit", "Clients", new { id = client.CLIENT_ID });
             }
-            catch
+            catch(Exception ex)
             {
+                ExceptionDetails = ex;
                 ErrorMessage = "Unexpected error occured while creating an endpoint";
             }
+
+            List<SelectListItem> items = GetProviders();
+            ViewBag.Providviders = new SelectList(items, "Value", "Text");
 
             return View(model);
         }
@@ -97,8 +101,9 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Console.Controllers
 
                 return RedirectToAction("Edit", "Clients", new { id = client.CLIENT_ID });
             }
-            catch
+            catch (Exception ex)
             {
+                ExceptionDetails = ex;
                 ErrorMessage = "Unexpected error occured while updating the endpoint";
             }
 

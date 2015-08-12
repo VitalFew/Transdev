@@ -11,21 +11,38 @@ namespace VitalFew.Transdev.Australasia.Data.Core.Database
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class VF_API_CLIENT_OBJECTS
     {
         public int TRANSDEV_ID { get; set; }
+
+        [DisplayName("Parameter Name")]
+        [Required]
         public string TRANSDEV_PARAM { get; set; }
         public System.Guid CLIENT_OBJECT_ID { get; set; }
         public int DATA_PROVIDER_ID { get; set; }
+
+        [DisplayName("Database Server Name")]
+        [Required]
         public string DB_SERVER_NAME { get; set; }
         public string DB_SERVER_PORT { get; set; }
+
+        [DisplayName("Database Name")]
+        [Required]
         public string DB_NAME { get; set; }
         public string DB_USER { get; set; }
         public string DB_USER_PASSWORD { get; set; }
         public string DB_AUTHENTICATION_TYPE { get; set; }
         public Nullable<bool> DB_INTEGRATED_SECURITY { get; set; }
+
+        [DisplayName("Database Schema")]
+        [Required]
         public string DB_SCHEMA { get; set; }
+
+        [DisplayName("Database Object Name")]
+        [Required]
         public string DB_OBJECT_NAME { get; set; }
         public Nullable<System.DateTime> DB_OBJECT_CREATED_DATE { get; set; }
         public Nullable<System.DateTime> DB_OBJECT_MODIFIED_DATE { get; set; }
