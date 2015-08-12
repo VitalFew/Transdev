@@ -157,6 +157,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ClientObjectsController.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
@@ -427,6 +428,7 @@
     <Content Include="Views\ClientObjects\Add.cshtml" />
     <Content Include="Views\ClientObjects\Edit.cshtml" />
     <Content Include="Views\ClientObjects\Index.cshtml" />
+    <Content Include="Views\Shared\_Alerts.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -436,6 +438,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

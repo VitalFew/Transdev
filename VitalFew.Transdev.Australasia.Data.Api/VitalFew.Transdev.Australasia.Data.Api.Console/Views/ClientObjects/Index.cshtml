@@ -40,21 +40,10 @@
 @section scripts
 {
     <script language="javascript">
-        $(function () {
-            $('#btToken').click(function (e) {
-                $.ajax({
-                    url: "@Url.Action("GetToken","Clients")",
-                    type: "GET",
-                    cache: false,
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    error: function (response) {
-                        alert(response.responseText);
-                    },
-                    success: function (response) {
-                        $('#tokenInput').val(response);
-                }
-            });
+
+        $(document).ready(function () {
+            $('#objectGrid').dataTable({
+                "pagingType": "full_numbers"
             });
         });
 

@@ -1,8 +1,5 @@
 ﻿@model IEnumerable<VitalFew.Transdev.Australasia.Data.Core.Database.VF_API_CLIENT_OBJECTS>
 
-
-
-
 <table class="table" id="objectGrid">
     <thead>
         <tr>
@@ -14,29 +11,17 @@
             <th>Action</th>
         </tr>
     </thead>
-
-    <tfoot>
-        <tr>
-            <th>Provider</th>
-            <th>Parameter Name</th>
-            <th>Server Name</th>
-            <th>Database Name</th>
-            <th>Object Name</th>
-            <th>Action</th>
-        </tr>
-    </tfoot>
     <tbody>
-@foreach (var item in Model)
-{
-        <tr>
-            <td>@item.VF_DATA_PROVIDER.DATA_PROVIDER_Name</td>
-            <td>@item.TRANSDEV_PARAM</td>
-            <td>@item.DB_SERVER_NAME</td>
-            <td>@item.DB_NAME</td>
-            <td>@item.DB_OBJECT_NAME</td>
-            <td>@Html.ActionLink("Edit", "Edit", new { id = item.CLIENT_OBJECT_ID })</td>
-        </tr>
-}
+    @foreach (var item in Model)
+    {
+            <tr>
+                <td>@item.VF_DATA_PROVIDER.DATA_PROVIDER_Name</td>
+                <td>@item.TRANSDEV_PARAM</td>
+                <td>@item.DB_SERVER_NAME</td>
+                <td>@item.DB_NAME</td>
+                <td>@item.DB_OBJECT_NAME</td>
+                <td>@Html.ActionLink("Edit", "Edit", new { id = item.CLIENT_OBJECT_ID })</td>
+            </tr>
+    }
     </tbody>
-
 </table>

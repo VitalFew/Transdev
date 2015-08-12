@@ -11,7 +11,7 @@ using VitalFew.Transdev.Australasia.Data.Core.Database;
 
 namespace VitalFew.Transdev.Australasia.Data.Api.Console.Controllers
 {
-    public class ClientsController : Controller
+    public class ClientsController : BaseController
     {
         private readonly ICatalogClientProvider _catalogClientProvider;
 
@@ -80,6 +80,8 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Console.Controllers
         public async Task<ActionResult> Edit(VF_API_CATALOG_CLIENTS client)
         {
             await _catalogClientProvider.Save(client);
+            
+            SuccessMessage = "Client is Updated";
 
             return RedirectToAction("Index");
         }
@@ -92,9 +94,10 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Console.Controllers
         [HttpPost]
         public async Task<ActionResult> Add(VF_API_CATALOG_CLIENTS client)
         {
-            //TODO: Should Generate from SQL
             client.CLIENT_ID = Guid.NewGuid();
             await _catalogClientProvider.Save(client);
+
+            SuccessMessage = "New Client is Added";
 
             return RedirectToAction("Index");
         }

@@ -19,7 +19,6 @@ namespace VitalFew.Transdev.Australasia.Data.Core.Database
         public System.Guid CLIENT_OBJECT_ID { get; set; }
         public int DATA_PROVIDER_ID { get; set; }
         public string DB_SERVER_NAME { get; set; }
-        public string DB_INSTANCE_NAME { get; set; }
         public string DB_SERVER_PORT { get; set; }
         public string DB_NAME { get; set; }
         public string DB_USER { get; set; }
@@ -27,7 +26,6 @@ namespace VitalFew.Transdev.Australasia.Data.Core.Database
         public string DB_AUTHENTICATION_TYPE { get; set; }
         public Nullable<bool> DB_INTEGRATED_SECURITY { get; set; }
         public string DB_SCHEMA { get; set; }
-        public string DB_OBJECT_TYPE { get; set; }
         public string DB_OBJECT_NAME { get; set; }
         public Nullable<System.DateTime> DB_OBJECT_CREATED_DATE { get; set; }
         public Nullable<System.DateTime> DB_OBJECT_MODIFIED_DATE { get; set; }

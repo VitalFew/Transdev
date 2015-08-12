@@ -6,7 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="d0367648ec6c4e3ead6b3e02da10292c" Name="Diagram1">
         <EntityTypeShape EntityType="DataModel.VF_API_CATALOG_CLIENTS" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="DataModel.VF_API_CLIENT_OBJECTS" Width="1.5" PointX="3" PointY="2.5" />
+        <EntityTypeShape EntityType="DataModel.VF_API_CLIENT_OBJECTS" Width="1.5" PointX="3" PointY="2.75" />
         <EntityTypeShape EntityType="DataModel.VF_DATA_PROVIDER" Width="1.5" PointX="0.75" PointY="3.875" />
         <AssociationConnector Association="DataModel.FK_VF_API_CLIENT_OBJECTS_VF_API_CATALOG_CLIENTS" />
         <AssociationConnector Association="DataModel.FK_VF_API_CLIENT_OBJECTS_VF_DATA_PROVIDER" />

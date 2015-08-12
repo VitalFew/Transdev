@@ -6,9 +6,9 @@ using System.Web.Mvc;
 using VitalFew.Transdev.Australasia.Data.Api.Console.Providers.Contract;
 using VitalFew.Transdev.Australasia.Data.Core.Database;
 
-namespace VitalFew.Transdev.Australasia.Data.Api.Controllers
+namespace VitalFew.Transdev.Australasia.Data.Api.Console.Controllers
 {
-    public class ClientObjectsController : Controller
+    public class ClientObjectsController : BaseController
     {
         private readonly ICatalogClientProvider _catalogClientProvider;
         private readonly IClientObjectProvider _clientObjectProvider;
@@ -60,6 +60,8 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Controllers
             await _clientObjectProvider.Save(model);
             var client = _catalogClientProvider.GetAll().Where(x => x.TRANSDEV_ID == model.TRANSDEV_ID).First();
 
+            SuccessMessage = "New Endpoint is Added";
+
             return RedirectToAction("Edit", "Clients", new { id = client.CLIENT_ID });
         }
 
@@ -80,6 +82,9 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Controllers
             await _clientObjectProvider.Save(model);
 
             var client = _catalogClientProvider.GetAll().Where(x => x.TRANSDEV_ID == model.TRANSDEV_ID).First();
+
+            SuccessMessage = "Endpoint is Updated";
+
             return RedirectToAction("Edit", "Clients", new { id = client.CLIENT_ID });
         }
 
