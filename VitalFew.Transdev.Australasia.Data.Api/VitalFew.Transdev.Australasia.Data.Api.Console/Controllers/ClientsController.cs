@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using VitalFew.Transdev.Australasia.Data.Api.Console.Models.Dto;
 using VitalFew.Transdev.Australasia.Data.Api.Console.Providers.Contract;
 using VitalFew.Transdev.Australasia.Data.Core.Database;
+using VitalFew.Transdev.Australasia.Data.Core.Framework;
 
 namespace VitalFew.Transdev.Australasia.Data.Api.Console.Controllers
 {
@@ -20,10 +21,66 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Console.Controllers
             _catalogClientProvider = catalogClientProvider;
         }
 
-        // GET: Clients
         public ActionResult Index()
         {
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult Edit(Guid id)
+        {
+            var client = _catalogClientProvider.GetAll().Where(x => x.CLIENT_ID.Equals(id)).FirstOrDefault();
+
+            return View(client);
+        }
+
+        public async Task<ActionResult> Edit(VF_API_CATALOG_CLIENTS client)
+        {
+            try
+            {
+                await _catalogClientProvider.Save(client);
+
+                SuccessMessage = "Client is Updated";
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                ErrorMessage = "Unexpected error occured while updating the client";
+            }
+
+            return View(client);
+        }
+
+        [HttpGet]
+        public ActionResult Add()
+        {
+            return View(new VF_API_CATALOG_CLIENTS { CLIENT_TOKEN = ClientToken.NewToken() });
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Add(VF_API_CATALOG_CLIENTS client)
+        {
+            try
+            {
+                client.CLIENT_ID = Guid.NewGuid();
+                await _catalogClientProvider.Save(client);
+
+                SuccessMessage = "New Client is Added";
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                ErrorMessage = "Unexpected error occured while creating a client";
+            }
+
+            return View(client);
+        }
+
+        public JsonResult GetToken()
+        {
+            return Json(ClientToken.NewToken(), JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]
@@ -69,79 +126,5 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Console.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
-        [HttpGet]
-        public ActionResult Edit(Guid id)
-        {
-            var client = _catalogClientProvider.GetAll().Where(x => x.CLIENT_ID.Equals(id)).FirstOrDefault();
-
-            return View(client);
-        }
-
-        public async Task<ActionResult> Edit(VF_API_CATALOG_CLIENTS client)
-        {
-            await _catalogClientProvider.Save(client);
-            
-            SuccessMessage = "Client is Updated";
-
-            return RedirectToAction("Index");
-        }
-        [HttpGet]
-        public ActionResult Add()
-        {
-            return View(new VF_API_CATALOG_CLIENTS { CLIENT_TOKEN = GenerateToken() });
-        }
-
-        [HttpPost]
-        public async Task<ActionResult> Add(VF_API_CATALOG_CLIENTS client)
-        {
-            client.CLIENT_ID = Guid.NewGuid();
-            await _catalogClientProvider.Save(client);
-
-            SuccessMessage = "New Client is Added";
-
-            return RedirectToAction("Index");
-        }
-
-        public JsonResult GetToken()
-        {
-            return Json(GenerateToken(), JsonRequestBehavior.AllowGet);
-        }
-
-        private string GenerateToken()
-        {
-            int length = 30;
-            string allowedChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&";
-
-            if (length < 0) throw new ArgumentOutOfRangeException("length", "length cannot be less than zero.");
-            if (string.IsNullOrEmpty(allowedChars)) throw new ArgumentException("allowedChars may not be empty.");
-
-            const int byteSize = 0x100;
-            var allowedCharSet = new HashSet<char>(allowedChars).ToArray();
-            if (byteSize < allowedCharSet.Length) throw new ArgumentException(String.Format("allowedChars may contain no more than {0} characters.", byteSize));
-
-            // Guid.NewGuid and System.Random are not particularly random. By using a
-            // cryptographically-secure random number generator, the caller is always
-            // protected, regardless of use.
-            using (var rng = new System.Security.Cryptography.RNGCryptoServiceProvider())
-            {
-                var result = new StringBuilder();
-                var buf = new byte[128];
-                while (result.Length < length)
-                {
-                    rng.GetBytes(buf);
-                    for (var i = 0; i < buf.Length && result.Length < length; ++i)
-                    {
-                        // Divide the byte into allowedCharSet-sized groups. If the
-                        // random value falls into the last group and the last group is
-                        // too small to choose from the entire allowedCharSet, ignore
-                        // the value in order to avoid biasing the result.
-                        var outOfRangeStart = byteSize - (byteSize % allowedCharSet.Length);
-                        if (outOfRangeStart <= buf[i]) continue;
-                        result.Append(allowedCharSet[buf[i] % allowedCharSet.Length]);
-                    }
-                }
-                return result.ToString();
-            }
-        }
     }
 }

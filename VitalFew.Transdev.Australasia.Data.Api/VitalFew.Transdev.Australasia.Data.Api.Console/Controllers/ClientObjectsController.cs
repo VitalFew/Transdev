@@ -30,7 +30,6 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Console.Controllers
             return View(client);
         }
 
-        // GET: ClientObjects
         public ActionResult Get(Guid id)
         {
             var objects = _clientObjectProvider.GetAll()
@@ -54,15 +53,24 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Console.Controllers
         [HttpPost]
         public async Task<ActionResult> Add(VF_API_CLIENT_OBJECTS model)
         {
-            model.DB_OBJECT_MODIFIED_DATE = DateTime.Now;
-            model.DB_OBJECT_CREATED_DATE = DateTime.Now;
+            try
+            {
+                model.DB_OBJECT_MODIFIED_DATE = DateTime.Now;
+                model.DB_OBJECT_CREATED_DATE = DateTime.Now;
 
-            await _clientObjectProvider.Save(model);
-            var client = _catalogClientProvider.GetAll().Where(x => x.TRANSDEV_ID == model.TRANSDEV_ID).First();
+                await _clientObjectProvider.Save(model);
+                var client = _catalogClientProvider.GetAll().Where(x => x.TRANSDEV_ID == model.TRANSDEV_ID).First();
 
-            SuccessMessage = "New Endpoint is Added";
+                SuccessMessage = "New Endpoint is Added";
 
-            return RedirectToAction("Edit", "Clients", new { id = client.CLIENT_ID });
+                return RedirectToAction("Edit", "Clients", new { id = client.CLIENT_ID });
+            }
+            catch
+            {
+                ErrorMessage = "Unexpected error occured while creating an endpoint";
+            }
+
+            return View(model);
         }
 
         [HttpGet]
@@ -78,14 +86,26 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Console.Controllers
         [HttpPost]
         public async Task<ActionResult> Edit(VF_API_CLIENT_OBJECTS model)
         {
-            model.DB_OBJECT_MODIFIED_DATE = DateTime.Now;
-            await _clientObjectProvider.Save(model);
+            try
+            {
+                model.DB_OBJECT_MODIFIED_DATE = DateTime.Now;
+                await _clientObjectProvider.Save(model);
 
-            var client = _catalogClientProvider.GetAll().Where(x => x.TRANSDEV_ID == model.TRANSDEV_ID).First();
+                var client = _catalogClientProvider.GetAll().Where(x => x.TRANSDEV_ID == model.TRANSDEV_ID).First();
 
-            SuccessMessage = "Endpoint is Updated";
+                SuccessMessage = "Endpoint is Updated";
 
-            return RedirectToAction("Edit", "Clients", new { id = client.CLIENT_ID });
+                return RedirectToAction("Edit", "Clients", new { id = client.CLIENT_ID });
+            }
+            catch
+            {
+                ErrorMessage = "Unexpected error occured while updating the endpoint";
+            }
+
+            List<SelectListItem> items = GetProviders();
+            ViewBag.Providviders = new SelectList(items, "Value", "Text");
+
+            return View(model);
         }
 
         private List<SelectListItem> GetProviders()
