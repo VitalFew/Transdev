@@ -8,60 +8,56 @@
     }
 </style>
 
+<h1>Manage Clients</h1>
 
-<body>
-    <div class="container">
+<br />
+<br />
 
-        <h1>Manage Clients</h1>
+<script language="javascript">
+    $(document).ready(function () {
+        $('#ClientDataTable').dataTable({
+            "bProcessing": true,
+            "bServerSide": true,
+            "sAjaxSource": '@Url.Action("AjaxDataProvider", "Clients")',
+            "aoColumns": [
+                {
+                    "sName": "Id",
+                    "bSearchable": false,
+                    "bSortable": false,
+                    "bVisible": false
 
-        <br />
-        <br />
+                },
+                { "sName": "ClientName" },
+                { "sName": "ClientStatus", sClass: "alignCenter" },
+                {
+                    sClass: "alignCenter",
+                    "mRender": function (data, type, full) {
+                        return '<a href=@Url.Action("Edit", "Clients")' + '/' + full[0] + '>Edit</a>&nbsp;&nbsp;&nbsp;<a href=@Url.Action("Index", "Endpoints")' + '/' + full[0] + '>Endpoints</a>';
+                    }
+                }
+            ]
+        });
+    });
+</script>
 
-        <script language="javascript">
-            $(document).ready(function () {
-                $('#ClientDataTable').dataTable({
-                    "bProcessing": true,
-                    "bServerSide": true,
-                    "sAjaxSource": '@Url.Action("AjaxDataProvider", "Clients")',
-                    "aoColumns": [
-                        {
-                            "sName": "Id",
-                            "bSearchable": false,
-                            "bSortable": false,
-                            "bVisible": false
+<p>
+    <a href="@Url.Action("Add","Clients")" class="btn btn-primary btn-lg">Create a New Client</a>
+</p>
 
-                        },
-                        { "sName": "ClientName" },
-                        { "sName": "ClientStatus", sClass: "alignCenter" },
-                        {
-                            sClass: "alignCenter",
-                            "mRender": function (data, type, full) {
-                                return '<a href=@Url.Action("Edit", "Clients")' + '/' + full[0] + '>Edit</a>&nbsp;&nbsp;&nbsp;<a href=@Url.Action("Index", "Endpoints")' + '/' + full[0] + '>Endpoints</a>';
-                            }
-                        }
-                    ]
-                });
-            });
-        </script>
-            <p>
-                <a href="@Url.Action("Add","Clients")" class="btn btn-primary btn-lg">Create a New Client</a>
-            </p>
+<br />
 
-            <br />
+<div style="max-width:750px;margin-top:15px">
+    <table id="ClientDataTable" class="display">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Client Name</th>
+                <th width="100px">Client Status</th>
+                <th width="75">Action</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
 
-            <div style="max-width:750px;margin-top:15px">
-                <table id="ClientDataTable" class="display">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Client Name</th>
-                            <th width="100px">Client Status</th>
-                            <th width="75">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-        </div>
     
-</body>
