@@ -25,7 +25,5 @@ namespace VitalFew.Transdev.Australasia.Data.Core.Database
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VF_API_CLIENT_OBJECTS> VF_API_CLIENT_OBJECTS { get; set; }
-        public virtual VF_DATA_PROVIDER VF_DATA_PROVIDER1 { get; set; }
-        public virtual VF_DATA_PROVIDER VF_DATA_PROVIDER2 { get; set; }
     }
 }

@@ -4,9 +4,9 @@ using System.Web.Http;
 using System.Data.Entity;
 using System;
 
-using VitalFew.Transdev.Australasia.Data.Api.Providers.Contract;
 using VitalFew.Transdev.Australasia.Data.Api.Models;
 using VitalFew.Transdev.Australasia.Data.Api.Common;
+using VitalFew.Transdev.Australasia.Data.Core.Providers.Contract;
 
 namespace VitalFew.Transdev.Australasia.Data.Api.Controllers
 {

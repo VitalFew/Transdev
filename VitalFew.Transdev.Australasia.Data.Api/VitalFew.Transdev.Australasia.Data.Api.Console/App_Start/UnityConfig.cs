@@ -40,7 +40,7 @@ namespace VitalFew.Transdev.Australasia.Data.Api.App_Start
             // TODO: Register your types here
             container.RegisterType<IClientObjectProvider, ClientObjectProvider>();
             container.RegisterType<ICatalogClientProvider, CatalogClientProvider>();
-            container.RegisterType<IDataProvider, DataProvider>();
+            container.RegisterType<ILookupProvider, LookupProvider>();
         }
     }
 }

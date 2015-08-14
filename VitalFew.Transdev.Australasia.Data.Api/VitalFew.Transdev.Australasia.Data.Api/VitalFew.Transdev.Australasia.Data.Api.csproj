@@ -243,14 +243,6 @@
     <Compile Include="Navigation\UserMenu.cs" />
     <Compile Include="Navigation\UserMenuItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Providers\AuthorizationProvider.cs" />
-    <Compile Include="Providers\CatalogClientProvider.cs" />
-    <Compile Include="Providers\Contract\IAuthorizationProvider.cs" />
-    <Compile Include="Providers\Contract\ICatalogClientProvider.cs" />
-    <Compile Include="Providers\Contract\IConfigurationProvider.cs" />
-    <Compile Include="Providers\ConfigurationProvider.cs" />
-    <Compile Include="Providers\Contract\IDataProvider.cs" />
-    <Compile Include="Providers\DataProvider.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>

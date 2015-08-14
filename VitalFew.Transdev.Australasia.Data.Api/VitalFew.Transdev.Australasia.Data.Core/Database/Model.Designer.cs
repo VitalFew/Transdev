@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Dhanushka\Source\Repos\Transdev\VitalFew.Transdev.Australasia.Data.Api\VitalFew.Transdev.Australasia.Data.Core\Database\Model.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\VitalFew\Transdev\VitalFew.Transdev.Australasia.Data.Api\VitalFew.Transdev.Australasia.Data.Core\Database\Model.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

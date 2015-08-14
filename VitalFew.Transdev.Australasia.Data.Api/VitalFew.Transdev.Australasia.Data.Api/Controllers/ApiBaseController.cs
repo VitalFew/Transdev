@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.Http;
 
-using VitalFew.Transdev.Australasia.Data.Api.Providers.Contract;
+using VitalFew.Transdev.Australasia.Data.Core.Providers.Contract;
 
 namespace VitalFew.Transdev.Australasia.Data.Api.Controllers
 {

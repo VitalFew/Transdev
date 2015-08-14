@@ -4,8 +4,8 @@ using System.Threading.Tasks;
 using System.Web.Http;
 
 using VitalFew.Transdev.Australasia.Data.Api.Models;
-using VitalFew.Transdev.Australasia.Data.Api.Providers.Contract;
 using VitalFew.Transdev.Australasia.Data.Core.Exceptions;
+using VitalFew.Transdev.Australasia.Data.Core.Providers.Contract;
 
 namespace VitalFew.Transdev.Australasia.Data.Api.Controllers
 {

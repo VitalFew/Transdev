@@ -4,8 +4,8 @@ using Unity.WebApi;
 
 using VitalFew.Transdev.Australasia.Data.Api.Navigation;
 using VitalFew.Transdev.Australasia.Data.Api.Navigation.Contract;
-using VitalFew.Transdev.Australasia.Data.Api.Providers;
-using VitalFew.Transdev.Australasia.Data.Api.Providers.Contract;
+using VitalFew.Transdev.Australasia.Data.Core.Providers;
+using VitalFew.Transdev.Australasia.Data.Core.Providers.Contract;
 
 namespace VitalFew.Transdev.Australasia.Data.Api
 {

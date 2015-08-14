@@ -3,8 +3,9 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Security.Claims;
+using System.Threading.Tasks;
 
-using VitalFew.Transdev.Australasia.Data.Api.Providers;
+using VitalFew.Transdev.Australasia.Data.Core.Providers;
 
 namespace VitalFew.Transdev.Australasia.Data.Api.Infrastructure.Headers
 {
@@ -24,7 +25,7 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Infrastructure.Headers
         /// <param name="request"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        protected override System.Threading.Tasks.Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, System.Threading.CancellationToken cancellationToken)
+        protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, System.Threading.CancellationToken cancellationToken)
         {
             IEnumerable<string> clientIdValues;
             IEnumerable<string> clientTokenValues;

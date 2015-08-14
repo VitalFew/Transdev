@@ -13,15 +13,14 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Console.Controllers
     {
         private readonly ICatalogClientProvider _catalogClientProvider;
         private readonly IClientObjectProvider _clientObjectProvider;
-        private readonly IDataProvider _dataProvider;
-
+        private readonly ILookupProvider _lookupProvider;
 
         public EndpointsController(ICatalogClientProvider catalogClientProvider, 
-            IClientObjectProvider clientObjectProvider, IDataProvider dataProvider)
+            IClientObjectProvider clientObjectProvider, ILookupProvider lookupProvider)
         {
             _catalogClientProvider = catalogClientProvider;
             _clientObjectProvider = clientObjectProvider;
-            _dataProvider = dataProvider;
+            _lookupProvider = lookupProvider;
         }
 
         public ActionResult Index(Guid id)
@@ -116,7 +115,7 @@ namespace VitalFew.Transdev.Australasia.Data.Api.Console.Controllers
 
         private List<SelectListItem> GetProviders()
         {
-            List<SelectListItem> items = (from data in _dataProvider.GetAll()
+            List<SelectListItem> items = (from data in _lookupProvider.GetProviders()
                                           select new SelectListItem
                                           {
                                               Value = data.DATA_PROVIDER_ID.ToString(),
