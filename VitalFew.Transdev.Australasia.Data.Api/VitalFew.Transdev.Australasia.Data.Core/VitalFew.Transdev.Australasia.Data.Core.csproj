@@ -79,12 +79,20 @@
     </Compile>
     <Compile Include="Exceptions\AdaptorExecuteException.cs" />
     <Compile Include="Framework\ClientToken.cs" />
+    <Compile Include="Framework\StringCipher.cs" />
     <Compile Include="Processor\IProcessor.cs" />
     <Compile Include="Adaptors\Adaptor.cs" />
     <Compile Include="Parameters\Interfaces\IParameters.cs" />
     <Compile Include="Parameters\Interfaces\ISqlServerTableParameters.cs" />
     <Compile Include="Parameters\SqlServerTableParameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\CatalogClientProvider.cs" />
+    <Compile Include="Providers\ClientObjectProvider.cs" />
+    <Compile Include="Providers\Contract\Class1.cs" />
+    <Compile Include="Providers\Contract\ICatalogClientProvider.cs" />
+    <Compile Include="Providers\Contract\IClientObjectProvider.cs" />
+    <Compile Include="Providers\Contract\IDataProvider.cs" />
+    <Compile Include="Providers\DataProvider.cs" />
     <Compile Include="Result\QueryResult.cs" />
   </ItemGroup>
   <ItemGroup>

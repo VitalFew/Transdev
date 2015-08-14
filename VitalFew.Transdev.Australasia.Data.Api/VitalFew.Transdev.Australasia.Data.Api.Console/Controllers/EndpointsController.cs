@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using VitalFew.Transdev.Australasia.Data.Api.Console.Providers.Contract;
+
 using VitalFew.Transdev.Australasia.Data.Core.Database;
+using VitalFew.Transdev.Australasia.Data.Core.Providers.Contract;
 
 namespace VitalFew.Transdev.Australasia.Data.Api.Console.Controllers
 {

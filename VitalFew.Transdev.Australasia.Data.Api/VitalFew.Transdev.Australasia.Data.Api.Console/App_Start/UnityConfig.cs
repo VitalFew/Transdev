@@ -1,7 +1,8 @@
 using System;
 using Microsoft.Practices.Unity;
-using VitalFew.Transdev.Australasia.Data.Api.Console.Providers;
-using VitalFew.Transdev.Australasia.Data.Api.Console.Providers.Contract;
+
+using VitalFew.Transdev.Australasia.Data.Core.Providers.Contract;
+using VitalFew.Transdev.Australasia.Data.Core.Providers;
 
 namespace VitalFew.Transdev.Australasia.Data.Api.App_Start
 {

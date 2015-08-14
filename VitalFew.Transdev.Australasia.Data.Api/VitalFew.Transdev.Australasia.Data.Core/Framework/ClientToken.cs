@@ -8,6 +8,11 @@ namespace VitalFew.Transdev.Australasia.Data.Core.Framework
 {
     public static class ClientToken
     {
+        
+        /// <summary>
+        /// Create a New Token
+        /// </summary>
+        /// <returns></returns>
         public static string NewToken()
         {
             int length = 30;

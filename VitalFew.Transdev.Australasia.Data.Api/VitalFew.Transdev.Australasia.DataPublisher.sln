@@ -1,15 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.22823.1
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VitalFew.Transdev.Australasia.Data.Core", "VitalFew.Transdev.Australasia.Data.Core\VitalFew.Transdev.Australasia.Data.Core.csproj", "{31220C85-94EF-4E1C-8029-430DB94B82C1}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VitalFew.Transdev.Australasia.DataPublisher", "VitalFew.Transdev.Australasia.DataPublisher\VitalFew.Transdev.Australasia.DataPublisher.csproj", "{C749AA1A-06D7-4B78-9C44-09B4E0473CBF}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "VitalFew.Transdev.Australasia.DataBase", "VitalFew.Transdev.Australasia.DataBase\VitalFew.Transdev.Australasia.DataBase.sqlproj", "{3C3458FE-7F90-4435-B3E5-1A2C7C446849}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VitalFew.Transdev.Australasia.Data.Api.Console", "VitalFew.Transdev.Australasia.Data.Api.Console\VitalFew.Transdev.Australasia.Data.Api.Console.csproj", "{CDD0AC92-8F6E-4451-951A-9A508A8D3E48}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VitalFew.Transdev.Australasia.Data.Api", "VitalFew.Transdev.Australasia.Data.Api\VitalFew.Transdev.Australasia.Data.Api.csproj", "{C749AA1A-06D7-4B78-9C44-09B4E0473CBF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +21,6 @@ Global
 		{31220C85-94EF-4E1C-8029-430DB94B82C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31220C85-94EF-4E1C-8029-430DB94B82C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31220C85-94EF-4E1C-8029-430DB94B82C1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C749AA1A-06D7-4B78-9C44-09B4E0473CBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C749AA1A-06D7-4B78-9C44-09B4E0473CBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C749AA1A-06D7-4B78-9C44-09B4E0473CBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C749AA1A-06D7-4B78-9C44-09B4E0473CBF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3C3458FE-7F90-4435-B3E5-1A2C7C446849}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3C3458FE-7F90-4435-B3E5-1A2C7C446849}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C3458FE-7F90-4435-B3E5-1A2C7C446849}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
@@ -35,6 +31,10 @@ Global
 		{CDD0AC92-8F6E-4451-951A-9A508A8D3E48}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CDD0AC92-8F6E-4451-951A-9A508A8D3E48}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CDD0AC92-8F6E-4451-951A-9A508A8D3E48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C749AA1A-06D7-4B78-9C44-09B4E0473CBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C749AA1A-06D7-4B78-9C44-09B4E0473CBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C749AA1A-06D7-4B78-9C44-09B4E0473CBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C749AA1A-06D7-4B78-9C44-09B4E0473CBF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
